@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using InspectorPortal.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InspectorPortal.Controllers
@@ -7,11 +8,17 @@ namespace InspectorPortal.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
+        private readonly InspectorPortalDbContext dbContext;
+
+        public AuthenticationController(InspectorPortalDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
         [HttpPost("login")]
         public IActionResult Login()
         {
             //TODO: handle
-            return Ok();
+            return Ok("Çalıştı");
         }
     }
 }
