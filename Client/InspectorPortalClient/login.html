@@ -134,32 +134,35 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    if(window.localStorage.getItem("UserName")){
-        window.location.href = "/index.html";
-      }
-      //click function
-    function login(){
-      let username = document.getElementById("yourUsername");
-      let password = document.getElementById("yourPassword");
-      let data = {
-        Email:username.value,
-        Password: password.value
-      };
-      axios.post(`https://localhost:7177/api/authentication/login`, data)
-      .then(function (response) {
-        if(response.data){
-          window.localStorage.setItem("UserName", response.data);
-        }
-        window.location.href = "/index.html";
-      })
-      .catch(function (error) {
-        // handle error
-        alert("Olmadı");
-      })
-      .finally(function () {
-        // always executed
-      });
-    }
+    // if(window.localStorage.getItem("UserName")){
+    //     window.location.href = "/index.html";
+    //   }
+    //   //click function
+    // function login(){
+    //   let username = document.getElementById("yourUsername");
+    //   let sifre = document.getElementById("yourPassword");
+    //   let data = {
+    //     Email:username.value,
+    //     Sifre: sifre.value
+    //   };
+    //   axios.post(`https://localhost:7177/api/authentication/login`, data)
+    //   .then(function (response) {
+
+    //     var data = JSON.stringify(response.data);
+    //     if(data){
+    //       window.localStorage.setItem("Alldata",data);
+    //       console.log(data);
+    //     }
+    //     window.location.href = "/index.html";
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     alert("Olmadı");
+    //   })
+    //   .finally(function () {
+    //     // always executed
+    //   });
+    //}
   </script>
 
 </body>

@@ -1,4 +1,6 @@
-
+//EntityFramework kullanýmý için gerekli configler burada yapýlmalýdýr. 
+// DbContext extensiný eklendikten sonra DbContextOptionBuilder metodu bir parametreye atýlarak ConectionStringimiz yazýlýr. ConnectionString appsettings.json dosyasýnda tutulur. 
+//AddCors ile cors policy için gerekli configurasyonlar yapýlýr. Fraklý originlerden istek atýlmasýna izin verilmiþ oluruz. Geliþtirme aþamasýnda yapýlacak bir þey olup daha sonra kaldýrýlmalýdýr??? 
 using InspectorPortal.Data;
 using Microsoft.EntityFrameworkCore;
 

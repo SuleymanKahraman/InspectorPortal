@@ -1,4 +1,7 @@
 ﻿{
+  //LaunchURL aracılığı ile swagger isimli web sitesinde backend'deki çalışmalarımızı sınayabiliriz. Böylece hiçbir ön yüz geliştirmemize gerek kalmadan swagger sayesinde post/get işlemleri sağlıklı yapılıyor mu yapılmıyor mu diye bakabiliriz. 
+
+  //applicationUrl sekmesinde biri HTTP diğeri HTTPS olmak üzere iki farklı localhost portu tanımlanır. Uygulamamıza bu portlardan erilebilir hale getiririz. 
   "$schema": "https://json.schemastore.org/launchsettings.json",
 
   "profiles": {
