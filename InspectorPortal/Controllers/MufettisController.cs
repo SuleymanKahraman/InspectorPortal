@@ -15,12 +15,26 @@ namespace InspectorPortal.Controllers
         {
             this.dbContext = dbContext;
         }
+        [HttpGet("mufettis")]
+        public IActionResult Mufettis() 
+        {
+            var mufettisList = dbContext.Mufettisler.Select(p=> new {p.Id,p.KurumSicilNo,p.Isim,p.Soyisim}).ToList();
+            return Ok(mufettisList);
+        }
 
         [HttpPost("mufettis")]
         public IActionResult Mufettis([FromBody] Mufettis mufettis)
         {
-
-            return Ok();
+            if(mufettis != null) {
+                dbContext.Mufettisler.Add(mufettis);
+                dbContext.SaveChanges();
+                return Ok("Kaydetme İşlemi Başarılı!!!");
+            }
+            else
+            {
+                return BadRequest();
+            }
+            
         }
     }
 }
