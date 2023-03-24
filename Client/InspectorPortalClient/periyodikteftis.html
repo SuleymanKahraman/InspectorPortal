@@ -119,10 +119,8 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Ünite</label>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" aria-label="Default select example" id="unite">
+
               </select>
             </div>
           </div>
@@ -157,12 +155,12 @@
           <label for="inputDate" class="col-sm-2 col-form-label">Tefiş Edilen Dönem</label>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="date" class="form-control">
+              <input type="date" class="form-control" id="date_1">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="date" class="form-control">
+              <input type="date" class="form-control" id="date_2">
             </div>
           </div>
 
@@ -195,7 +193,7 @@
           <div class="card-body  text-light">
             <div class="card-title">Birim Ekle</div>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
+              <select class="form-select" aria-label="Default select example" id="birim">
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -291,7 +289,7 @@
             <button type="button" class="btn btn-primary btn-lg"> Yeni Kayıt</button>
           </a>
           <a class="btn btn-default" href="#">
-            <button type="button" class="btn btn-primary btn-lg" ">Onayla</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="onayla()">Onayla</button>
           </a>
 
           <br><br>
@@ -299,82 +297,149 @@
       </div>
     </div>
 
-   
-      <!-- BUL SEKMESİ -->
-      <div class=" card" id="detail-2" style="display: none;">
-              <div class="card-body">
-                <br>
-                <!-- General Form Elements -->
-                <form>
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Birim</label>
-                    <div class="col-sm-10">
-                      <select class="form-select" aria-label="Default select example">
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    </div>
-                  </div>
 
-                  <label for="inputDate" class="col-sm-2 col-form-label">Tarih Aralığı</label>
-                  <div class="row mb-3">
-                    <div class="col-sm-5">
-                      <input type="date" class="form-control">
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col-sm-5">
-                      <input type="date" class="form-control">
-                    </div>
-                  </div>
+    <!-- BUL SEKMESİ -->
+    <div class=" card" id="detail-2" style="display: none;">
+      <div class="card-body">
+        <br>
+        <!-- General Form Elements -->
+        <form>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Birim</label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
 
-                  <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Müfettiş </label>
-                    <div class="col-sm-10">
-                      <select class="form-select" aria-label="Default select example">
-                        <option value="1">Süleyman Kahraman</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="col-xs-1 text-center">
-                    <button type="button" class="btn btn-primary btn-lg">Listele</button>
-                    <button type="button" class="btn btn-primary btn-lg">Tamam</button>
-                  </div>
-                  <br>
-                  <div class="card-body">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Başlama Tarihi</th>
-                          <th>Bitiş Tarihi</th>
-                          <th>Teftiş Dönemi</th>
-                          <th>Görevli Müfettişler</th>
-                          <th>Teftiş Edilen Ünite/Birim</th>
+          <label for="inputDate" class="col-sm-2 col-form-label">Tarih Aralığı</label>
+          <div class="row mb-3">
+            <div class="col-sm-5">
+              <input type="date" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-5">
+              <input type="date" class="form-control">
+            </div>
+          </div>
 
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th> <input class="form-check-input" type="radio"> </th>
-                          <td>02.04.2021</td>
-                          <td>17.06.2021</td>
-                          <td>2000 - 2020</td>
-                          <td>Süleyman Kahraman</td>
-                          <td>Doğal Gaz İletim 2. Bölge Müdürlüğü/Trakya İşletme Müdürlüğü</td>
-                        </tr>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Müfettiş </label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">Süleyman Kahraman</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="col-xs-1 text-center">
+            <button type="button" class="btn btn-primary btn-lg">Listele</button>
+            <button type="button" class="btn btn-primary btn-lg">Tamam</button>
+          </div>
+          <br>
+          <div class="card-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Başlama Tarihi</th>
+                  <th>Bitiş Tarihi</th>
+                  <th>Teftiş Konusu</th>
+                  <th>Görevli Müfettişler</th>
+                  <th>Teftiş Edilen Ünite/Birim</th>
+                  <th>İdari Tedbir</th>
+                  <th>Hukuki İşlem</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>02.04.2021</td>
+                  <td>17.06.2021</td>
+                  <td>2000 - 2020 Dönemi Teftişi</td>
+                  <td>Süleyman Kahraman</td>
+                  <td>Doğal Gaz İletim 2. Bölge Müdürlüğü/Trakya İşletme Müdürlüğü</td>
+                  <td> <a href="#" onclick="idariTedEkle()">Ekle</a></td>
+                  <td> <a href="#" onclick="hukukiIsEkle()">Ekle</a></td>
 
-                      </tbody>
-                    </table>
-                  </div>
-                </form>
+                </tr>
 
-              </div>
+              </tbody>
+            </table>
+          </div>
+        </form>
+
       </div>
+    </div>
+    <br>
+    <div class="card" id="idariTedbir" style="display: none;">
+      <div class="card-body">
+        <br>
+        <div class="pagetitle">
+          <h2>İdari Tedbirler</h2>
+        </div>
+        <br>
+        <form>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Onaylanan</label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">Müfettiş(ler) Görüşü</option>
+                <option value="2">Başkanlık Görüşü</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card" id="hukukiIslem" style="display: none;">
+      <div class="card-body">
+        <br>
+        <div class="pagetitle">
+          <h2>Hukuki İşlemler</h2>
+        </div>
+        <br>
+        <form>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
+            <div class="col-sm-10">
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label">Onaylanan</label>
+            <div class="col-sm-10">
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">Müfettiş(ler) Görüşü</option>
+                <option value="2">Başkanlık Görüşü</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
   </main><!-- End #main -->
 
@@ -391,6 +456,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -404,6 +470,42 @@
   <script src="assets/js/main.js"></script>
 
   <script>
+
+    axios.get(`https://localhost:7177/api/UniteBirim/uniteBirim`).then(function (response) {
+
+      console.log(response.data);
+      debugger; 
+      var Uniteler = []
+      Uniteler = response.data;
+      var select = document.getElementById("unite");
+      select.innerHTML = "";
+      for (let i = 0; i < Uniteler.length; i++) {
+        var option = "";
+        option += "<option>" + Uniteler[i] + "</option>";
+        select.innerHTML += option;
+
+      }
+     
+    })
+
+   
+
+    //axios.post(`https://localhost:7177/api/UniteBirim/uniteBirim`)
+
+    // Uniteler.forEach(x => {
+    //   var i = 0;
+    //   var option = "";
+    //   option+="<option>" +x[i]+"</option>";
+    //   i++;
+    //   select.innerHTML+=option;
+    // });
+    // function onayla() {
+    //   let date1 = document.getElementById("date_1").value;
+    //   let date2 = document.getElementById("date_2").value;  
+    //   let teftisDonem = date1+" - "+date2;
+    // }
+
+
     function openEkle() {
       var detail_1 = document.getElementById("detail-1");
       var detail_2 = document.getElementById("detail-2");
@@ -413,6 +515,9 @@
       } else {
         detail_1.style.display = "none";
       }
+
+      var selectedUnite = document.getElementById("unite");
+      console.log(selectedUnite.value);
     }
 
     function openBul() {
@@ -424,6 +529,29 @@
       } else {
         detail_2.style.display = "none";
       }
+    }
+
+    function idariTedEkle() {
+      var idariTedbir = document.getElementById("idariTedbir");
+      var hukukiIslem = document.getElementById("hukukiIslem");
+      if (idariTedbir.style.display === "none") {
+        idariTedbir.style.display = "block";
+        hukukiIslem.style.display = "none";
+      } else {
+        idariTedbir.style.display = "none";
+      }
+
+    }
+    function hukukiIsEkle() {
+      var hukukiIslem = document.getElementById("hukukiIslem");
+      var idariTedbir = document.getElementById("idariTedbir");
+      if (hukukiIslem.style.display === "none") {
+        hukukiIslem.style.display = "block";
+        idariTedbir.style.display = "none";
+      } else {
+        hukukiIslem.style.display = "none";
+      }
+
     }
   </script>
 

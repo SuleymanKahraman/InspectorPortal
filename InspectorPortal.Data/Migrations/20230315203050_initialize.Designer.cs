@@ -353,7 +353,7 @@ namespace InspectorPortal.Data.Migrations
                     b.ToTable("Sorusturmalar");
                 });
 
-            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirim", b =>
+            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirimDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -394,13 +394,13 @@ namespace InspectorPortal.Data.Migrations
 
             modelBuilder.Entity("InspectorPortal.Data.Entities.Gorev", b =>
                 {
-                    b.HasOne("InspectorPortal.Data.Entities.UniteBirim", "UniteBirim")
+                    b.HasOne("InspectorPortal.Data.Entities.UniteBirimDto", "UniteBirimDto")
                         .WithMany()
                         .HasForeignKey("UnitID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("UniteBirim");
+                    b.Navigation("UniteBirimDto");
                 });
 
             modelBuilder.Entity("InspectorPortal.Data.Entities.HukukiIslem", b =>
@@ -463,7 +463,7 @@ namespace InspectorPortal.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("InspectorPortal.Data.Entities.UniteBirim", null)
+                    b.HasOne("InspectorPortal.Data.Entities.UniteBirimDto", null)
                         .WithMany("PeriyodikTeftisler")
                         .HasForeignKey("UniteBirimId");
 
@@ -489,9 +489,9 @@ namespace InspectorPortal.Data.Migrations
                     b.Navigation("SorumluPersonel");
                 });
 
-            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirim", b =>
+            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirimDto", b =>
                 {
-                    b.HasOne("InspectorPortal.Data.Entities.UniteBirim", "UstBirim")
+                    b.HasOne("InspectorPortal.Data.Entities.UniteBirimDto", "UstBirim")
                         .WithMany()
                         .HasForeignKey("BirimID");
 
@@ -507,7 +507,7 @@ namespace InspectorPortal.Data.Migrations
                     b.Navigation("IdariTedbirler");
                 });
 
-            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirim", b =>
+            modelBuilder.Entity("InspectorPortal.Data.Entities.UniteBirimDto", b =>
                 {
                     b.Navigation("PeriyodikTeftisler");
                 });

@@ -1,4 +1,5 @@
-﻿using InspectorPortal.Data;
+﻿using InspectorPortal.Common.Enums;
+using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,12 @@ namespace InspectorPortal.Controllers
         [HttpPost("mufettis")]
         public IActionResult Mufettis([FromBody] Mufettis mufettis)
         {
+
+            var gorev = new Gorev()
+            {
+                GorevTipi = GorevTipi.PeriyodikTeftis,
+                
+            };
             if(mufettis != null) {
                 dbContext.Mufettisler.Add(mufettis);
                 dbContext.SaveChanges();

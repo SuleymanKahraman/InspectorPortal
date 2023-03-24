@@ -306,29 +306,29 @@
                 });
         }
 
-        // axios.get(`https://localhost:7177/api/Mufettis/mufettis`).then((response) => {
+        axios.get(`https://localhost:7177/api/Mufettis/mufettis`).then((response) => {
+            console.log(response.data);
 
-        //     var myArray = []
-        //     myArray = response.data;
-        //     return myArray;
-        // }).then((myArray) => {
+            var myArray = []
+            myArray = response.data;
+            var table = document.getElementById("table");
+            table.innerHTML = "";
+            myArray.forEach(x => {
+                var tr = "";
 
-        //     Insert_Data();
-        //     function Insert_Data() {
+                tr += '<tr>';
+                tr += '<td>' + x.kurumSicilNo + '</td>' + '<td>' + x.isim + '</td>' + '<td>' + x.soyisim + '</td>' + '<td><a href="mufettisBilgileri.html">Detay</a></td>';
+                tr += '</tr>';
+                table.innerHTML += tr;
+            });
 
-        //         var table = document.getElementById("table");
-        //         table.innerHTML = "";
-        //         var tr = "";
-        //         myArray.forEach(x => {
-        //             tr += '<tr>';
-        //             tr += '<td>' + x.KurumSicilNo + '</td>' + '<td>' + x.Isim + '</td>' + '<td>' + x.Soyisim + '</td>' + '<td><a href="mufettisBilgileri.html">Detay</a></td>';
-        //             tr += '</tr>';
-        //             table.innerHTML += tr;
-        //         });
+        });
 
-        //     }
 
-        
+
+
+
+
             // var table = document.getElementById("table");
             // for (let i = 1; i < myArray.length; i++) {
 
