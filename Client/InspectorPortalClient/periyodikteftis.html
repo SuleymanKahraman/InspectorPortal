@@ -127,6 +127,7 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Teftişe Tabi Ünitenin Amiri</label>
             <div class="col-sm-10">
+              <p id="sorumlu"></p>
               <input type="text" class="form-control" value="Read only / Disabled" disabled>
             </div>
           </div>
@@ -473,22 +474,23 @@
 
     axios.get(`https://localhost:7177/api/UniteBirim/uniteBirim`).then(function (response) {
 
-      console.log(response.data);
-      debugger; 
+
       var Uniteler = []
-      Uniteler = response.data;
+      Uniteler = response.data.birim;
+      var Sorumlu = []
+      Sorumlu = response.data.birimsorumlusu;
       var select = document.getElementById("unite");
       select.innerHTML = "";
       for (let i = 0; i < Uniteler.length; i++) {
         var option = "";
         option += "<option>" + Uniteler[i] + "</option>";
         select.innerHTML += option;
-
       }
-     
+
+
     })
 
-   
+
 
     //axios.post(`https://localhost:7177/api/UniteBirim/uniteBirim`)
 
@@ -516,8 +518,15 @@
         detail_1.style.display = "none";
       }
 
-      var selectedUnite = document.getElementById("unite");
-      console.log(selectedUnite.value);
+      let birim = document.getElementById("unite").value;
+      console.log(birim);
+      debugger;
+      axios.post(`https://localhost:7177/api/UniteBirim/uniteBirim`, birim).then(function (response) {
+
+        console.log(response.data);
+        debugger;
+      })
+
     }
 
     function openBul() {
