@@ -26,23 +26,73 @@ namespace InspectorPortal.Controllers
 
             // UniteBirim.cs'de BirimID'si 53 (Genel Müdürlük satırı ID'si) olanlar Unite olacağından UniteBirimDto'daki fieldlara yerleştirilecektir. 
 
-            var gmId = DbContext.UniteBirimler.Where(x => x.Birim == "Genel Müdürlük").Select(x => x.Id).FirstOrDefault();
-            var UniteBirim = new UniteBirimDto()
-            {
-                Birim = DbContext.UniteBirimler.Where(x => x.BirimID == gmId).Select(x => x.Birim),
-                BirimSorumlusu = DbContext.UniteBirimler.Where(x => x.BirimID == gmId).Select(x => x.BirimSorumlusu),
-            };
+            //var gmId = DbContext.UniteBirimler.Where(x => x.Birim == "Genel Müdürlük").Select(x => x.Id).FirstOrDefault();
+            var gmId = DbContext.UniteBirimler.First(x => x.Birim == "Genel Müdürlük").Id;
+            var result = DbContext.UniteBirimler.Where(x => x.BirimID == gmId).Select(x => new Option { Id = x.Id, label = x.Birim }).ToList();
+
             //var UstBirimler = DbContext.UniteBirimler.Where(x => x.BirimID == gmId).Select(x=> new { x.Id, x.Birim, x.BirimSorumlusu });
-            return Ok(UniteBirim);
+            return Ok(result);
         }
-        [HttpPost("uniteBirim")]
-        public IActionResult UniteBirim([FromForm] string birim)
+        [HttpGet("birimSorumlusu/{birimId}")]
+        public IActionResult UniteBirim([FromRoute] int birimId)
         {
             // İlgili UstBirim seçildikten sonra UstBirime bağlı olan AltBirimler post edililir. 
+            var result = DbContext.UniteBirimler.Where(x => x.Id == birimId).Select(x => x.BirimSorumlusu).FirstOrDefault();
+            return Ok(result);
+        }
 
-            var Id = DbContext.UniteBirimler.Where(x => x.Birim == birim).Select(x => x.Id).FirstOrDefault();
-            var Birimler = DbContext.UniteBirimler.Where(x => x.BirimID == Id).Select(x => x.Birim).ToList();
-            return Ok(Birimler);
+
+        [HttpPost("uniteTanimla")]
+        public IActionResult UniteTanimla([FromBody] AddUnit input)
+        {
+            var gmId = DbContext.UniteBirimler.First(x => x.Birim == "Genel Müdürlük").Id;
+            var entity = new UniteBirim()
+            {
+                Birim = input.UniteAdi,
+                BirimSorumlusu = input.UniteSorumlusu,
+                BirimID = gmId
+
+            };
+            if (entity != null)
+            {
+
+                DbContext.UniteBirimler.Add(entity);
+                DbContext.SaveChanges();
+                return Ok("Kaydetme İşlemi Başarılı!!!");
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+
+        }
+
+        [HttpPost("birimTanimla")]
+        public IActionResult BirimTanimla([FromBody] AddBirim input)
+        {
+            var entity = new UniteBirim()
+            {
+                Birim = input.BirimAdi,
+                BirimSorumlusu = input.BirimSorumlusu,
+                BirimID = input.BirimID
+
+            };
+            if (entity != null)
+            {
+
+                DbContext.UniteBirimler.Add(entity);
+                DbContext.SaveChanges();
+                return Ok("Kaydetme İşlemi Başarılı!!!");
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+
         }
     }
 }
