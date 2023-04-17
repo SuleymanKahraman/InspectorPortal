@@ -155,7 +155,7 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link active"
-                id="uniteEkle"
+                id="pills-home-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-home"
                 type="button"
@@ -169,7 +169,7 @@
             <li class="nav-item" role="presentation">
               <button
                 class="nav-link"
-                id="birimEkle"
+                id="pills-profile-tab"
                 data-bs-toggle="pill"
                 data-bs-target="#pills-profile"
                 type="button"
@@ -180,25 +180,26 @@
                 Birim Ekle
               </button>
             </li>
+            </li>
             <li class="nav-item" role="presentation">
-                <button
-                  class="nav-link"
-                  id="listele"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-profile"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-profile"
-                  aria-selected="false"
-                >
-                  Listele
-                </button>
-              </li>
+              <button
+                class="nav-link"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+              >
+                Listele
+              </button>
+            </li>
           </ul>
           <div class="tab-content pt-2">
             <div
               class="tab-pane fade show active"
-              id="uniteEkle"
+              id="pills-home"
               role="tabpanel"
               aria-labelledby="home-tab"
             >
@@ -240,7 +241,7 @@
             </div>
             <div
               class="tab-pane fade"
-              id="birimEkle"
+              id="pills-profile"
               role="tabpanel"
               aria-labelledby="profile-tab"
             >
@@ -287,6 +288,21 @@
                 </div>
               </form>
               <!-- Vertical Form -->
+            </div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="contact-tab">
+              <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Birim Adı</th>
+                        <th>Birim Sorumlusu</th>
+                        <th>Bağlı Olduğu Birim</th>
+                        <th>Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody id="table">
+
+                </tbody>
+            </table>
             </div>
           </div>
           <!-- End Pills Tabs -->
@@ -346,6 +362,7 @@
           });
         });
 
+        
       function onayla_u() {
         unite = document.getElementById("unite").value;
         uniteSorumlusu =
@@ -375,11 +392,11 @@
           " " +
           document.getElementById("soyisim_b").value;
 
-          let data = {
-            BirimID: selectedUnit,
-            BirimAdi: birim,
-            BirimSorumlusu: birimSorumlusu
-          };
+        let data = {
+          BirimID: selectedUnit,
+          BirimAdi: birim,
+          BirimSorumlusu: birimSorumlusu,
+        };
 
         axios
           .post(`https://localhost:7177/api/UniteBirim/birimTanimla`, data)

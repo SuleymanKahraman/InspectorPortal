@@ -106,7 +106,8 @@
         </li>
       </ul>
     </li><!-- End Components Nav -->
-</aside><!-- End Sidebar-->
+ </aside> 
+<!-- End Sidebar-->
   
   <main id="main" class="main">
 
@@ -161,48 +162,22 @@
           <label for="inputDate" class="col-sm-2 col-form-label">Tefiş Edilen Dönem</label>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="date" class="form-control" id="date_1">
+              <input type="number" placeholder="YYYY" min="1990" max="2023" id="date_1">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="date" class="form-control" id="date_2">
-            </div>
-          </div>
-
-          <label for="inputDate" class="col-sm-2 col-form-label">Tefiş Süresi</label>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="date" class="form-control">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="date" class="form-control">
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <legend class="col-form-label col-sm-5 pt-0">İnceleme/Soruşturma Talebi: </legend>
-            <div class="col-sm-10">
-
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                <label class="form-check-label" for="gridCheck1">
-                  VAR
-                </label>
-              </div>
+              <input type="number" placeholder="YYYY" min="1990" max="2023" id="date_2">
 
             </div>
           </div>
+
           <!--  İKİNCİ KISIM - BİRİNCİ BÖLÜM -->
           <div class="card-body  text-light">
             <div class="card-title">Birim Ekle</div>
             <div class="col-sm-10">
               <select class="form-select" aria-label="Default select example" id="birim">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="">Seçiniz...</option>
               </select>
             </div>
             <br>
@@ -398,7 +373,7 @@
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-            <div class="col-sm-10">
+          <div class="col-sm-10">
               <textarea class="form-control"></textarea>
             </div>
           </div>
@@ -488,16 +463,36 @@
       });
     });
 
-    function uniteSelected(event){
+   
+
+    function uniteSelected(event) {
       selectedUnit = event.target.value;
       axios.get(`https://localhost:7177/api/UniteBirim/birimSorumlusu/${event.target.value}`).then(function (response){
 
         var input = document.getElementById("birimSorumlusu");
         input.value = response.data;
       })
+
+      axios.get(`https://localhost:7177/api/UniteBirim/altbirim/${selectedUnit}`).then(function (response){
+
+        var birim = document.getElementById("birim");
+        response.data.forEach(x=>{
+
+          birim.innerHTML += `<option value = ${x.id}>${x.label}</option>`
+        })
+      })
+
+     
+
     }
 
-   
+    function onayla() {
+
+      var teftisKonusu = document.getElementById("date_1").value + " "+document.getElementById("date_2").value;
+      console.log(teftisKonusu);
+
+
+    }
 
 
     function openEkle() {

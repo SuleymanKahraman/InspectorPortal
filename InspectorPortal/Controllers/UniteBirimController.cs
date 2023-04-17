@@ -41,6 +41,12 @@ namespace InspectorPortal.Controllers
             return Ok(result);
         }
 
+        [HttpGet("altbirim/{birimId}")]
+        public IActionResult AltBirim([FromRoute] int birimId)
+        {
+            var result = DbContext.UniteBirimler.Where(x => x.BirimID == birimId).Select(x => new Option { Id = x.Id, label = x.Birim }).ToList();
+            return Ok(result);
+        }
 
         [HttpPost("uniteTanimla")]
         public IActionResult UniteTanimla([FromBody] AddUnit input)
