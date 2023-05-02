@@ -1,6 +1,14 @@
+	INSPECTORPORTAL
+
 Add-Migration [name] -P InspectorPortal.Data -C InspectorPortalDbContext -S InspectorPortal
 
 Update-Database -P InspectorPortal.Data -Context InspectorPortalDbContext -S InspectorPortal
+
+	WELCOMETOTURKEY
+
+Add-Migration [] -P WelcomeToTurkeyAPI.Data -C WTTDbContext-S WelcomeToTurkeyAPI
+
+Update-Database -P WelcomeToTurkeyAPI.Data -Context WTTDbContext -S WelcomeToTurkeyAPI
 
 
 MAC İÇİN MIGRATION

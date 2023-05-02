@@ -4,6 +4,7 @@ using InspectorPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InspectorPortal.Data.Migrations
 {
     [DbContext(typeof(InspectorPortalDbContext))]
-    partial class InspectorPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230502130848_new")]
+    partial class @new
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,6 +74,9 @@ namespace InspectorPortal.Data.Migrations
 
                     b.Property<int>("GorevTipi")
                         .HasColumnType("int");
+
+                    b.Property<decimal?>("KamuZarari")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Konusu")
                         .IsRequired()

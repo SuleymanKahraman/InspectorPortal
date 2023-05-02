@@ -32,9 +32,8 @@ namespace InspectorPortal.Data.Entities
         public DateTime BaslamaTarihi { get; set; }
         [Required]
         public DateTime BitisTarihi { get; set; }
-
-        public decimal? KamuZarari { get; set; }
-
+        
+        public int? KamuZarari { get; set; }
         public bool Durum { get; set; }
 
         public ICollection<IdariTedbir> IdariTedbirler { get; set; }
