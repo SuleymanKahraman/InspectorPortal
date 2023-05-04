@@ -29,38 +29,29 @@ namespace InspectorPortal.Data.Entities
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(128)]
-        public string Sifre { get; set; }
-
-        [Required]
         [MaxLength(50)]
         public string TcNo { get; set; }
-        [Required]
-        public DateTime DogumTarihi { get; set; }
-        [MaxLength(50)] 
-        public string DogumYeri { get; set; }
-        [MaxLength(50)]
-        public string BabaAdi { get; set; }
-        [MaxLength(50)]
-        public string MedeniHal { get; set; }
-        [MaxLength(50)]
-        public string MezunOkul { get; set; }
 
-        public DateTime IseBaslama { get; set; }
+        [Required]
         [MaxLength(50)]
         public string KurumSicilNo { get; set; }
+        [Required]
         [MaxLength(50)]
         public string MufettisNo { get; set; }
+        [Required]
         [MaxLength(50)]
         public string Unvan { get; set; }
+        [Required]
         [MaxLength(50)]
         public string CalismaDurumu { get; set; }
+        [Required]
         [MaxLength(50)]
         public string Telefon { get; set; }
+        [Required]
         [MaxLength(500)]
         public string Adres { get; set; }
 
 
-        
+
     }
 }

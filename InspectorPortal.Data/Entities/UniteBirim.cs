@@ -29,6 +29,5 @@ namespace InspectorPortal.Data.Entities
         [ForeignKey(nameof(BirimID))]
         public virtual UniteBirim UstBirim { get; set; }
 
-        public ICollection<PeriyodikTeftis> PeriyodikTeftisler { get; set; }
     }
 }
