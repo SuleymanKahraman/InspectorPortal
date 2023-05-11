@@ -29,5 +29,7 @@ namespace InspectorPortal.Common.Dtos.MufettisDtos
         public string Telefon { get; set; }
 
         public string Adres { get; set; }
+        public string Photo { get; set; }
+
     }
 }

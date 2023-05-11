@@ -30,7 +30,18 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
+    <style>
+        input[type="file"] {
+            display: none;
+        }
 
+        .custom-file-upload {
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -137,6 +148,21 @@
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
                         <!-- Vertical Form -->
                         <form class="row g-3" action="mufettisTanimla.html" id="kayit-form">
+                            <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+                                <div style="border-radius: 50% !important; border: 1px solid rgb(121, 121, 121); width: 200px; height: 200px;"
+                                    class="d-flex justify-content-center align-items-center">
+                                    <img src="./assets/img/noimage.png" style="border-radius: 50% !important;"
+                                        width="190" height="190" id="photo-display" />
+                                </div>
+                                <label class="custom-file-upload">
+                                    <i class="bi bi-upload"></i>
+                                    <span>Fotoğraf Yükle</span>
+                                    <input type="file" id="avatar" name="avatar" style="width: 200px;" class="mt-3"
+                                        accept="image/png, image/jpeg" onchange="onUploadPhoto(event)">
+                                </label>
+
+
+                            </div>
                             <div class="col-12">
                                 <label class="form-label">İsim</label>
                                 <input type="text" class="form-control" id="isim">
@@ -251,7 +277,13 @@
     <script src="assets/js/main.js"></script>
     <script>
         const form = document.getElementById("kayit-form");
+        var photo;
         loadListOfMufettis();
+        function onUploadPhoto(event) {
+            let element = document.getElementById("photo-display");
+            element.src = URL.createObjectURL(event.target.files[0]);
+            photo = event.target.files[0];
+        }
         function loadListOfMufettis() {
             axios.get(`https://localhost:7177/api/Mufettis/list-mufettisler`).then((response) => {
                 var myArray = []
@@ -273,26 +305,27 @@
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
-            const addMufettisData = {
-                Isim: document.getElementById("isim").value,
-                Soyisim: document.getElementById("soyisim").value,
-                Email: document.getElementById("email").value,
-                TcNo: document.getElementById("tcNo").value,
-                KurumSicilNo: document.getElementById("kurumSicilNo").value,
-                MufettisNo: document.getElementById("mufettisNo").value,
-                Unvan: document.getElementById("unvan").value,
-                CalismaDurumu: document.getElementById("calismaDurumu").value,
-                Telefon: document.getElementById("telefon").value,
-                Adres: document.getElementById("adres").value
-            }
+            let addMufettisData = new FormData();
+            addMufettisData.append("Isim", document.getElementById("isim").value);
+            addMufettisData.append("Soyisim", document.getElementById("soyisim").value);
+            addMufettisData.append("Email", document.getElementById("email").value);
+            addMufettisData.append("TcNo", document.getElementById("tcNo").value);
+            addMufettisData.append("KurumSicilNo", document.getElementById("kurumSicilNo").value);
+            addMufettisData.append("MufettisNo", document.getElementById("mufettisNo").value);
+            addMufettisData.append("Unvan", document.getElementById("unvan").value);
+            addMufettisData.append("CalismaDurumu", document.getElementById("calismaDurumu").value);
+            addMufettisData.append("Telefon", document.getElementById("telefon").value);
+            addMufettisData.append("Adres", document.getElementById("adres").value);
+            addMufettisData.append("Photo", photo);
 
 
-            axios.post(`https://localhost:7177/api/Mufettis/add-mufettis`, addMufettisData)
-                .then(function (response) {
-                    alert(response.data);
-                    window.location.reload();
+            axios.post(`https://localhost:7177/api/Mufettis/add-mufettis`, addMufettisData, {
+                "Content-Type": "multipart/form-data",
+            }).then(function (response) {
+                alert(response.data);
+                window.location.reload();
 
-                })
+            })
                 .catch(function (error) {
                     // handle error
                     alert("Olmadı");

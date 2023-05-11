@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,6 @@ namespace InspectorPortal.Common.Dtos.MufettisDtos
         public string Telefon { get; set; }
 
         public string Adres { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }

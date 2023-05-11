@@ -22,6 +22,5 @@ namespace InspectorPortal.Data
         public DbSet<DisiplinCezasi> DisiplinCezalari { get; set; } 
         public DbSet<MufettisGorev> MufettisGorevler { get; set; }
         public DbSet<Kullanici> Kullanicilar { get; set; }
-
     }
 }

@@ -25,7 +25,7 @@ namespace InspectorPortal.Data.Entities
         public string BirimSorumlusu { get; set; }
 
         [Required]  
-        public int? BirimID { get; set; }
+        public int BirimID { get; set; }
 
         [ForeignKey(nameof(BirimID))]
         public virtual UniteBirim UstBirim { get; set; }

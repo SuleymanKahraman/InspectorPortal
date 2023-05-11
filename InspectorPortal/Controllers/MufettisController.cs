@@ -1,10 +1,6 @@
-﻿using InspectorPortal.Common.Dtos;
-using InspectorPortal.Common.Dtos.MufettisDtos;
-using InspectorPortal.Common.Enums;
+﻿using InspectorPortal.Common.Dtos.MufettisDtos;
 using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InspectorPortal.Controllers
@@ -44,32 +40,39 @@ namespace InspectorPortal.Controllers
         [HttpGet("list-mufettis-by-Id/{mufettisId}")]
         public IActionResult ListMufettisById([FromRoute] int mufettisId)
         {
-            var mufettisRow = dbContext.Mufettisler.Where(x => x.Id == mufettisId).Select(x=> new ListOfMufettisById
+            var mufettisRow = dbContext.Mufettisler.Where(x => x.Id == mufettisId).Select(x => new ListOfMufettisById
             {
-                Isim= x.Isim,
-                Soyisim= x.Soyisim,
-                Email= x.Email,
-                TcNo= x.TcNo,
-                KurumSicilNo= x.KurumSicilNo,
-                MufettisNo= x.MufettisNo,
-                Unvan= x.Unvan,
-                CalismaDurumu= x.CalismaDurumu,
-                Telefon= x.Telefon,
-                Adres= x.Adres,
+                Isim = x.Isim,
+                Soyisim = x.Soyisim,
+                Email = x.Email,
+                TcNo = x.TcNo,
+                KurumSicilNo = x.KurumSicilNo,
+                MufettisNo = x.MufettisNo,
+                Unvan = x.Unvan,
+                CalismaDurumu = x.CalismaDurumu,
+                Telefon = x.Telefon,
+                Adres = x.Adres,
+                Photo = x.Photo != null ? Convert.ToBase64String(x.Photo) : null
             }).SingleOrDefault();
             if (mufettisRow != null)
             {
                 return Ok(mufettisRow);
             }
             return Ok("Müfettiş Bilgileri Mevcut Değil!!!");
-
         }
 
         // TODO: ADD MUFETTIS
 
         [HttpPost("add-mufettis")]
-        public IActionResult AddNewMufettis([FromBody] AddNewMufettis mufettis)
+        public IActionResult AddNewMufettis([FromForm] AddNewMufettis mufettis)
         {
+            byte[] resimBytes;
+            var photo = mufettis.Photo;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                photo.CopyTo(ms);
+                resimBytes = ms.ToArray();
+            }
             var addNewMufettisEntity = new Mufettis()
             {
                 Isim = mufettis.Isim,
@@ -82,6 +85,7 @@ namespace InspectorPortal.Controllers
                 CalismaDurumu = mufettis.CalismaDurumu,
                 Telefon = mufettis.Telefon,
                 Adres = mufettis.Adres,
+                Photo = resimBytes
             };
 
             if (addNewMufettisEntity != null)
@@ -92,7 +96,6 @@ namespace InspectorPortal.Controllers
             }
 
             return BadRequest();
-
         }
 
         // TODO: DELETE MUFETTIS BY ID
@@ -124,16 +127,15 @@ namespace InspectorPortal.Controllers
         // TODO: UPDATE MUFETTİS BY ID
 
         [HttpPut("update-mufettis/{mufettisId}")]
-
-        public IActionResult UpdateMufettisById([FromRoute] int mufettisId, [FromBody] UpdateMufettis mft)
+        public IActionResult UpdateMufettisById([FromRoute] int mufettisId, [FromForm] UpdateMufettis mft)
         {
             if (mufettisId == 0)
-            { 
-                return BadRequest(); 
+            {
+                return BadRequest();
             }
             else
             {
-                var currentMufettis = dbContext.Mufettisler.FirstOrDefault(x=>x.Id == mufettisId);
+                var currentMufettis = dbContext.Mufettisler.FirstOrDefault(x => x.Id == mufettisId);
                 if (currentMufettis != null)
                 {
                     currentMufettis.Isim = mft.Isim;
@@ -146,13 +148,26 @@ namespace InspectorPortal.Controllers
                     currentMufettis.CalismaDurumu = mft.CalismaDurumu;
                     currentMufettis.Telefon = mft.Telefon;
                     currentMufettis.Adres = mft.Adres;
+                    if (mft.Photo is not null)
+                    {
+                        byte[] resimBytes;
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            mft.Photo.CopyTo(ms);
+                            resimBytes = ms.ToArray();
+                        }
+                        currentMufettis.Photo = resimBytes;
+                    }
+                    else
+                    {
+                        currentMufettis.Photo = null;
+                    }
                     var result = dbContext.SaveChanges();
                     if (result > 0)
                     {
                         return Ok("Güncelleme İşlemi Başarılı");
                     }
                 };
-                              
             }
 
             return BadRequest();

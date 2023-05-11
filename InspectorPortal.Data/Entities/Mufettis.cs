@@ -51,6 +51,8 @@ namespace InspectorPortal.Data.Entities
         [MaxLength(500)]
         public string Adres { get; set; }
 
+        public byte[] Photo { get; set; }
+
 
 
     }

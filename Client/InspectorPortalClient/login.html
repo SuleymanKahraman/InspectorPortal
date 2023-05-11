@@ -1,182 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Pages / Login - NiceAdmin Bootstrap Template</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+  <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description" />
+  <meta content="" name="keywords" />
+  <!-- <meta name="google-signin-client_id"
+    content="82796243805-8431jt2sb3u26f3pfa371jfbp0brnu4c.apps.googleusercontent.com"> -->
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet"
-    />
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet" />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" />
 
-    <!-- =======================================================
+  <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  </head>
+</head>
 
-  <body>
-    <main>
-      <div class="container">
-        <section
-          class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4"
-        >
-          <div class="container">
-            <div class="row justify-content-center">
-              <div
-                class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
-              >
-                <div class="d-flex justify-content-center py-4">
-                  <a
-                    href="anasayfa.html"
-                    class="logo d-flex align-items-center w-auto"
-                  >
-                    <img src="assets/img/logo.png" alt="" />
-                    <span class="d-none d-lg-block">Teftiş Modulü</span>
-                  </a>
-                </div>
-                <!-- End Logo -->
+<body>
+  <main>
+    <div class="container">
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+              <div class="d-flex justify-content-center py-4">
+                <a href="anasayfa.html" class="logo d-flex align-items-center w-auto">
+                  <img src="assets/img/logo.png" alt="" />
+                  <span class="d-none d-lg-block">Teftiş Modulü</span>
+                  <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+                </a>
+              </div>
+              <!-- End Logo -->
 
-                <div class="card mb-3">
-                  <div class="card-body">
-                    <div class="pt-4 pb-2">
-                      <h5 class="card-title text-center pb-0 fs-4">
-                        Giriş Yapınız
-                      </h5>
-                    </div>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">
+                      Giriş Yapınız
+                    </h5>
+                  </div>
 
-                    <div class="row g-3">
-                      <form action="login.html" id="login-form">
-                        <div class="col-12 mb-3">
-                          <label for="yourUsername" class="form-label"
-                            >Email Adresi
-                          </label>
-                            <input
-                              type="text"
-                              name="username"
-                              class="form-control mb-2"
-                              id="L_Email"
-                              onkeyup="validateEmail()"
-                              required
-                            />
-                            <span id="validation-message">
-                              
-                            </span>
-                          </div>
-                        </div>
+                  <div class="row g-3">
+                    <form action="login.html" id="login-form">
+                      <div class="col-12 mb-3">
+                        <label for="yourUsername" class="form-label">Email Adresi
+                        </label>
+                        <input type="text" name="username" class="form-control mb-2" id="L_Email"
+                          onkeyup="validateEmail()" required />
+                        <span id="validation-message">
 
-                        <div class="col-12 mb-3">
-                          <label for="yourPassword" class="form-label"
-                            >Parola</label
-                          >
-                          <input
-                            type="password"
-                            name="password"
-                            class="form-control"
-                            id="L_Parola"
-                            required
-                          />
-                          <div class="invalid-feedback">
-                            Lütfen Parola Giriniz
-                          </div>
-                        </div>
-                      <div class="col-12">
-                        <button class="btn btn-primary w-100 mb-3" type="submit">
-                          Login
-                        </button>
+                        </span>
                       </div>
-                    </form>
-                      <div class="col-12">
-                        <p class="small mb-0">
-                          Admin Hesabınız Var Mı?
-                          <a href="register.html">Hesap Oluştur</a>
-                        </p>
-                      </div>
+                  </div>
+
+                  <div class="col-12 mb-3">
+                    <label for="yourPassword" class="form-label">Parola</label>
+                    <input type="password" name="password" class="form-control" id="L_Parola" required />
+                    <div class="invalid-feedback">
+                      Lütfen Parola Giriniz
                     </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100 mb-3" type="submit">
+                      Login
+                    </button>
+                  </div>
+                  </form>
+                  <div class="col-12">
+                    <p class="small mb-0">
+                      Admin Hesabınız Var Mı?
+                      <a href="register.html">Hesap Oluştur</a>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-    </main>
-    <!-- End #main -->
+        </div>
+    </div>
+    </section>
+    </div>
+  </main>
+  <!-- End #main -->
 
-    <a
-      href="#"
-      class="back-to-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="assets/vendor/echarts/echarts.min.js"></script>
-    <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    const form = document.getElementById("login-form");
+    form.addEventListener("submit", function (event) {
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script>
-      const form = document.getElementById("login-form");
-      form.addEventListener("submit", function(event){
+      event.preventDefault();
 
-        event.preventDefault();
+      const loginData = {
+        email: document.getElementById("L_Email").value,
+        parola: document.getElementById("L_Parola").value
+      };
 
-        const loginData ={
-          email:document.getElementById("L_Email").value,
-          parola:document.getElementById("L_Parola").value
-        };
-
-        axios.post(`https://localhost:7177/api/authentication/login`, loginData)
+      axios.post(`https://localhost:7177/api/authentication/login`, loginData)
         .then(function (response) {
-        
-          if(response.data){
-            window.localStorage.setItem("KullaniciId",response.data.kullaniciID);
-            window.localStorage.setItem("MufettisId",response.data.mufettisId);
-            window.localStorage.setItem("Isim",response.data.isim);
-            window.localStorage.setItem("Soyisim",response.data.soyisim);
-            window.localStorage.setItem("Unvan",response.data.unvan);
-            window.localStorage.setItem("Token",response.data.token);
+
+          if (response.data) {
+            window.localStorage.setItem("KullaniciId", response.data.kullaniciID);
+            window.localStorage.setItem("MufettisId", response.data.mufettisId);
+            window.localStorage.setItem("Isim", response.data.isim);
+            window.localStorage.setItem("Soyisim", response.data.soyisim);
+            window.localStorage.setItem("Unvan", response.data.unvan);
+            window.localStorage.setItem("Token", response.data.token);
             window.location.href = "/anasayfa.html";
           }
-          
+
         })
         .catch(function (error) {
           // handle error
@@ -186,54 +156,63 @@
           // always executed
         });
 
-      });
+    });
 
 
-      function validateEmail() {
-        const emailAdres = document.getElementById("L_Email");
-        const validationMessage = document.getElementById("validation-message");
-        const email = emailAdres.value.trim();
+    function validateEmail() {
+      const emailAdres = document.getElementById("L_Email");
+      const validationMessage = document.getElementById("validation-message");
+      const email = emailAdres.value.trim();
 
-        // Check if email is valid
-        const emailRegex = /^[^\s@]+@teftis\.gov\.tr$/;
-        if (!emailRegex.test(email)) {
-          validationMessage.innerHTML = "Geçersiz Email Adresi";
-          return;
-        }
-        validationMessage.innerHTML = "&#x2714;";
+      // Check if email is valid
+      const emailRegex = /^[^\s@]+@teftis\.gov\.tr$/;
+      if (!emailRegex.test(email)) {
+        validationMessage.innerHTML = "Geçersiz Email Adresi";
+        return;
       }
+      validationMessage.innerHTML = "&#x2714;";
+    }
 
-      // if(window.localStorage.getItem("UserName")){
-      //     window.location.href = "/anasayfa.html";
-      //   }
-      //   //click function
-      // function login(){
-      //   let username = document.getElementById("yourUsername");
-      //   let sifre = document.getElementById("yourPassword");
-      //   let data = {
-      //     Email:username.value,
-      //     Sifre: sifre.value
-      //   };
-      //   axios.post(`https://localhost:7177/api/authentication/login`, data)
-      //   .then(function (response) {
+    // if(window.localStorage.getItem("UserName")){
+    //     window.location.href = "/anasayfa.html";
+    //   }
+    //   //click function
+    // function login(){
+    //   let username = document.getElementById("yourUsername");
+    //   let sifre = document.getElementById("yourPassword");
+    //   let data = {
+    //     Email:username.value,
+    //     Sifre: sifre.value
+    //   };
+    //   axios.post(`https://localhost:7177/api/authentication/login`, data)
+    //   .then(function (response) {
 
-      //     var data = JSON.stringify(response.data);
-      //     if(data){
-      //       window.localStorage.setItem("Alldata",data);
-      //       console.log(data);
-      //     }
-      //     window.location.href = "/anasayfa.html";
-      //   })
-      //   .catch(function (error) {
-      //     // handle error
-      //     alert("Olmadı");
-      //   })
-      //   .finally(function () {
-      //     // always executed
-      //   });
-      // }
+    //     var data = JSON.stringify(response.data);
+    //     if(data){
+    //       window.localStorage.setItem("Alldata",data);
+    //       console.log(data);
+    //     }
+    //     window.location.href = "/anasayfa.html";
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     alert("Olmadı");
+    //   })
+    //   .finally(function () {
+    //     // always executed
+    //   });
+    // }
 
+    // function onSignIn(googleUser) {
+    //   var profile = googleUser.getBasicProfile();
+    //   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    //   console.log('Name: ' + profile.getName());
+    //   console.log('Image URL: ' + profile.getImageUrl());
+    //   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    // }
+  </script>
+  <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
 
-    </script>
-  </body>
+</body>
+
 </html>
