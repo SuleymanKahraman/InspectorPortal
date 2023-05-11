@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Ana Sayfa</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-center">
+            <a href="anasayfa.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="" />
+                <span class="d-none d-lg-block">Teftiş Modül Admin</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <!-- End Logo -->
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Ara" title="Enter search keyword" />
+                <button type="submit" title="Search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
+        </div>
+        <!--End Search Bar -->
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="anasayfa.html">
+                    <i class="bi bi-grid"></i>
+                    <span>Ana Sayfa</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link " href="mufettisTanimla.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Müfettiş Tanımlama</span>
+                </a>
+            </li>
+            <li class="nav-item" style="display: none;">
+                <a class="nav-link " href="mufettisBilgileri.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Müfettiş Bilgileri</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="uniteTanimla.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Ünite Tanımlama</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="periyodikteftis.html">
+                            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inceleme.html">
+                            <i class="bi bi-circle"></i><span>İnceleme</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sorusturma.html">
+                            <i class="bi bi-circle"></i><span>Soruşturma</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Components Nav -->
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="card">
+            <div class="card-body">
+                <br><br>
+                <!-- Vertical Form -->
+                <form class="row g-3">
+                    <div class="col-12">
+                        <h5>Ünite/Birim</h5>
+
+                    </div>
+                    <div class="col-12">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active">Uniteler: Daire Bşk./Bölge Müd./Müşavirlik</li>
+                                <li class="breadcrumb-item active">Birimler: İşletme Müd./Şube Müd./Diğer Alt
+                                    Birimler</li>
+                            </ol>
+                        </nav>
+                        <input id="unite-birim" type="text" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <h5>Unite/Birim Sorumlusu</h5>
+                    </div>
+                    <div class="col-12">
+                        <input type="text" class="form-control" id="unite-birim-sorumlusu" />
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary btn-lg" onclick="update()">
+                            Güncelle
+                        </button>
+                    </div>
+                </form>
+                <!-- Vertical Form -->
+
+            </div>
+        </div>
+    </main>
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        const uniteId = params.uniteID;
+        axios.get(`https://localhost:7177/api/UniteBirim/get-unite-by-id/${uniteId}`)
+            .then((response) => {
+                console.log(response.data);
+                document.getElementById("unite-birim").value = response.data.unite;
+                document.getElementById("unite-birim-sorumlusu").value = response.data.uniteSorumlusu;
+            })
+
+        function update() {
+
+            currentUniteBirim = {
+                uniteOrBirim: document.getElementById("unite-birim").value,
+                uniteOrBirimSorumlusu: document.getElementById("unite-birim-sorumlusu").value,
+
+            };
+
+            axios.put(`https://localhost:7177/api/UniteBirim/update-unite-birim-by-id/${uniteId}`, currentUniteBirim)
+                .then((response) => {
+
+                    if (response) {
+                        console.log(response.data);
+                        debugger;
+                        alert(response.data);
+                    }
+
+
+                })
+        }
+    </script>
+</body>
+
+</html>

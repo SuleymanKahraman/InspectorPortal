@@ -20,6 +20,8 @@ namespace InspectorPortal.Data
         public DbSet<IdariTedbir> IdariTedbirler { get; set; } 
         public DbSet<HukukiIslem> HukukiIslemler { get; set; } 
         public DbSet<DisiplinCezasi> DisiplinCezalari { get; set; } 
-        public DbSet<MufettisGorev> MufettisGorevler { get; set; } 
+        public DbSet<MufettisGorev> MufettisGorevler { get; set; }
+        public DbSet<Kullanici> Kullanicilar { get; set; }
+
     }
 }

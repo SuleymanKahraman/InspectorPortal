@@ -61,59 +61,61 @@
 
   </header><!-- End Header -->
 
- <!-- ======= Sidebar ======= -->
- <aside id="sidebar" class="sidebar">
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
-      <a class="nav-link " href="anasayfa.html">
-        <i class="bi bi-grid"></i>
-        <span>Ana Sayfa</span>
-      </a>
-    </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="anasayfa.html">
+          <i class="bi bi-grid"></i>
+          <span>Ana Sayfa</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-    <li class="nav-item">
-      <a class="nav-link " href="mufettisTanimla.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Müfettiş Tanımlama</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " href="mufettisBilgileri.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Müfettiş Bilgileri</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " href="uniteTanimla.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Ünite Tanımlama</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="periyodikteftis.html">
-            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-          </a>
-        </li>
-        <li>
-          <a href="inceleme.html">
-            <i class="bi bi-circle"></i><span>İnceleme</span>
-          </a>
-        </li>
-        <li>
-          <a href="sorusturma.html">
-            <i class="bi bi-circle"></i><span>Soruşturma</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Components Nav -->
-</aside><!-- End Sidebar-->
+      <li class="nav-item">
+        <a class="nav-link " href="mufettisTanimla.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Müfettiş Tanımlama</span>
+        </a>
+      </li>
+      <li class="nav-item" style="display: none;">
+        <a class="nav-link " href="mufettisBilgileri.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Müfettiş Bilgileri</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="uniteTanimla.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Ünite Tanımlama</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="periyodikteftis.html">
+              <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
+            </a>
+          </li>
+          <li>
+            <a href="inceleme.html">
+              <i class="bi bi-circle"></i><span>İnceleme</span>
+            </a>
+          </li>
+          <li>
+            <a href="sorusturma.html">
+              <i class="bi bi-circle"></i><span>Soruşturma</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+  </aside><!-- End Sidebar-->
+
+
   <main id="main" class="main">
 
     <section class="section profile">
@@ -124,10 +126,10 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/img/slmn.jpg" alt="Profile" class="rounded-circle">
-              <h2><span id="G_IsimSoyisim">Süleyman Kahraman</span></h2>
-              <h3><span id="G_Unvan">Müfettiş Yardımcısı</span></h3>
-              <h5>Kurum Sicil No: <span id="G_SicilNo">6371</span></h5>
-              <h6>Müfettiş No: <span id="G_MufettisNo">30</span></h6>
+              <h2><span id="isim">Süleyman</span> <span id="soyisim">Kahraman</span></h2>
+              <h3><span id="unvan">Müfettiş Yardımcısı</span></h3>
+              <h5>Kurum Sicil No: <span id="sicilNo">6371</span></h5>
+              <h6>Müfettiş No: <span id="mufettisNo">30</span></h6>
               <div class="social-links mt-2">
                 <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -155,9 +157,9 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Güncelle</button>
                 </li>
 
-                <!-- <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                </li> -->
+                <li class="nav-item">
+                  <button class="nav-link" type="button" onclick="deleteMufettis()">Sil</button>
+                </li>
 
                 <!-- <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change
@@ -174,48 +176,31 @@
                     eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
 
                   <h5 class="card-title">Profile Details</h5> -->
-
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Müfettişin Adı/Soyadı</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_IsimSoyisim"></span></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Unvanı</div>
-                    <div class="col-lg-9 col-md-8"><Span id="G_Unvan"></Span></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Doğum Tarihi</div>
-                    <div class="col-lg-9 col-md-8"><Span id="G_DogumTarihi"></Span></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Doğum Yeri</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_DogumYeri"></span> </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Medeni Hali</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_MedeniHal"></span> </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Mezuniyet</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_MezunOkul"></span> </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Telefon</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_Telefon"></span></div>
+                    <div class="col-lg-3 col-md-4 label">TcNo</div>
+                    <div class="col-lg-9 col-md-8"><span id="tcNo"></span> </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email Adresi</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_Email"></span></div>
+                    <div class="col-lg-9 col-md-8"><Span id="emailAdress"></Span></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Çalışma Durumu</div>
+                    <div class="col-lg-9 col-md-8"><Span id="calismaDurumu"></Span></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Telefon</div>
+                    <div class="col-lg-9 col-md-8"><span id="telefon"></span></div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Adres</div>
-                    <div class="col-lg-9 col-md-8"><span id="G_Adres"></span></div>
+                    <div class="col-lg-9 col-md-8"><span id="adres"></span></div>
                   </div>
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form id="guncelle-form" action="mufettisBilgileri.html">
                     <div class="profile-card d-flex flex-column align-items-center">
                       <img src="assets/img/slmn.jpg" alt="Profile" class="rounded-circle">
                       <div class="pt-2">
@@ -227,62 +212,31 @@
                     <!-- Vertical Form -->
                     <div class="col-12">
                       <label class="form-label">İsim</label>
-                      <input type="text" class="form-control" id="P_Isim">
+                      <input type="text" class="form-control" id="g-isim">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Soy İsim</label>
-                      <input type="text" class="form-control" id="P_Soyisim">
+                      <input type="text" class="form-control" id="g-soyisim">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Email Adresi</label>
-                      <input type="email" class="form-control" id="P_Email">
+                      <input type="email" class="form-control" id="g-email">
                     </div>
                     <div class="col-12">
-                      <label class="form-label">Şifre</label>
-                      <input type="password" class="form-control" id="P_Sifre">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">TC Kimlik No</label>
-                      <input type="number" class="form-control" id="P_TcNo">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Doğum Tarihi</label>
-                      <input type="date" class="form-control" id="P_DogumTarihi">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Doğum Yeri</label>
-                      <input type="text" class="form-control" id="P_DogumYeri">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Baba Adı</label>
-                      <input type="text" class="form-control" id="P_BabaAdi">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Medeni Hali</label>
-                      <select id="P_MedeniHal" class="form-select">
-                        <option>Evli</option>
-                        <option>Bekar</option>
-                      </select>
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">Mezun Olduğu Okul</label>
-                      <input type="text" class="form-control" id="P_MezunOkul">
-                    </div>
-                    <div class="col-12">
-                      <label class="form-label">İşe Başlama Tarihi</label>
-                      <input type="date" class="form-control" id="P_IseBaslama">
+                      <label class="form-label">TC No</label>
+                      <input type="number" class="form-control" id="g-tcNo">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Kurum Sicil No</label>
-                      <input type="number" class="form-control" id="P_SicilNo">
+                      <input type="number" class="form-control" id="g-kurumSicilNo">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Müfettiş No</label>
-                      <input type="number" class="form-control" id="P_MufettisNo">
+                      <input type="number" class="form-control" id="g-mufettisNo">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Unvan</label>
-                      <select id="P_Unvan" class="form-select">
+                      <select id="g-unvan" class="form-select">
                         <option>Müfettiş Yardımcısı</option>
                         <option>Müfettiş</option>
                         <option>Başmüfettiş</option>
@@ -290,23 +244,23 @@
                     </div>
                     <div class="col-12">
                       <label class="form-label">Çalışma Durumu</label>
-                      <select id="P_CalismaDurumu" class="form-select">
+                      <select id="g-calismaDurumu" class="form-select">
                         <option>Aktif</option>
                         <option>Pasif</option>
                       </select>
                     </div>
                     <div class="col-12">
                       <label class="form-label">Telefon</label>
-                      <input type="number" class="form-control" id="P_Telefon">
+                      <input type="number" class="form-control" id="g-telefon">
                     </div>
                     <div class="col-12">
                       <label class="form-label">Adres</label>
-                      <input type="text" class="form-control" id="P_Adres">
+                      <input type="text" class="form-control" id="g-adres">
                     </div>
                     <br>
-
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Değişiklikleri Kaydet</button>
+                      <button type="submit" class="btn btn-primary" onclick="updateMufettis()">Değişiklikleri
+                        Kaydet</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 
@@ -416,6 +370,7 @@
       class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
@@ -427,6 +382,95 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    // let token = window.localStorage.getItem("token");
+    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    const mufettisId = params.mufettisId;
+    loadMufettisBilgi();
+    function loadMufettisBilgi() {
+      axios.get(`https://localhost:7177/api/Mufettis/list-mufettis-by-Id/${mufettisId}`).then(function (response) {
+
+        if (response.data) {
+          let mufettis = response.data;
+          document.getElementById("isim").innerHTML = mufettis.isim;
+          document.getElementById("soyisim").innerHTML = mufettis.soyisim;
+          document.getElementById("emailAdress").innerHTML = mufettis.email;
+          document.getElementById("tcNo").innerHTML = mufettis.tcNo;
+          document.getElementById("sicilNo").innerHTML = mufettis.kurumSicilNo;
+          document.getElementById("mufettisNo").innerHTML = mufettis.mufettisNo;
+          document.getElementById("unvan").innerHTML = mufettis.unvan;
+          document.getElementById("calismaDurumu").innerHTML = mufettis.calismaDurumu;
+          document.getElementById("telefon").innerHTML = mufettis.telefon;
+          document.getElementById("adres").innerHTML = mufettis.adres;
+
+          document.getElementById("g-isim").value = mufettis.isim;
+          document.getElementById("g-soyisim").value = mufettis.soyisim;
+          document.getElementById("g-email").value = mufettis.email;
+          document.getElementById("g-tcNo").value = mufettis.tcNo;
+          document.getElementById("g-kurumSicilNo").value = mufettis.kurumSicilNo;
+          document.getElementById("g-mufettisNo").value = mufettis.mufettisNo;
+          document.getElementById("g-unvan").value = mufettis.unvan;
+          document.getElementById("g-calismaDurumu").value = mufettis.calismaDurumu;
+          document.getElementById("g-telefon").value = mufettis.telefon;
+          document.getElementById("g-adres").value = mufettis.adres;
+
+
+
+        } else {
+          window.location.href = "/login.html";
+        }
+
+      })
+
+
+    }
+
+    function deleteMufettis() {
+      axios
+        .delete(`https://localhost:7177/api/Mufettis/delete-mufettis/${mufettisId}`)
+        .then((response) => {
+
+          if (response) {
+
+            alert(response.data);
+            window.location.href = "/mufettisTanimla.html";
+
+          }
+
+        })
+    }
+
+
+
+    function updateMufettis() {
+      const currentMufettis = {
+
+        isim: document.getElementById("g-isim").value,
+        soyisim: document.getElementById("g-soyisim").value,
+        email: document.getElementById("g-email").value,
+        tcNo: document.getElementById("g-tcNo").value,
+        kurumSicilNo: document.getElementById("g-kurumSicilNo").value,
+        mufettisNo: document.getElementById("g-mufettisNo").value,
+        unvan: document.getElementById("g-unvan").value,
+        calismaDurumu: document.getElementById("g-calismaDurumu").value,
+        telefon: document.getElementById("g-telefon").value,
+        adres: document.getElementById("g-adres").value
+      };
+
+
+      axios.put(`https://localhost:7177/api/Mufettis/update-mufettis/${mufettisId}`, currentMufettis).then((response) => {
+
+        if (response) {
+          alert(response.data);
+        }
+      })
+    }
+
+
+  </script>
 
 </body>
 

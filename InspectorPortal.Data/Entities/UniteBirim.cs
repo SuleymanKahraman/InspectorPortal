@@ -24,6 +24,7 @@ namespace InspectorPortal.Data.Entities
         [MaxLength(100)]
         public string BirimSorumlusu { get; set; }
 
+        [Required]  
         public int? BirimID { get; set; }
 
         [ForeignKey(nameof(BirimID))]

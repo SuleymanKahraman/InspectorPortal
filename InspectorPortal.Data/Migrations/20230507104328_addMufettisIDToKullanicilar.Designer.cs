@@ -4,6 +4,7 @@ using InspectorPortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InspectorPortal.Data.Migrations
 {
     [DbContext(typeof(InspectorPortalDbContext))]
-    partial class InspectorPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230507104328_addMufettisIDToKullanicilar")]
+    partial class addMufettisIDToKullanicilar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,6 +163,9 @@ namespace InspectorPortal.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MufettisId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Parola")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -173,6 +179,8 @@ namespace InspectorPortal.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MufettisId");
 
                     b.ToTable("Kullanicilar");
                 });
@@ -333,6 +341,17 @@ namespace InspectorPortal.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Gorev");
+                });
+
+            modelBuilder.Entity("InspectorPortal.Data.Entities.Kullanici", b =>
+                {
+                    b.HasOne("InspectorPortal.Data.Entities.Mufettis", "Mufettis")
+                        .WithMany()
+                        .HasForeignKey("MufettisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mufettis");
                 });
 
             modelBuilder.Entity("InspectorPortal.Data.Entities.MufettisGorev", b =>

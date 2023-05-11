@@ -14,8 +14,12 @@ namespace InspectorPortal.Data.Entities
         [Required]
         public string Soyisim { get; set; }
         [Required]
+        public string Unvan { get; set; }
+        [Required]
         public string Email { get; set; }
         [Required]
         public string Parola { get; set; }
+
+        
     }
 }

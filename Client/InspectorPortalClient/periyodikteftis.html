@@ -54,61 +54,60 @@
 
   </header><!-- End Header -->
 
- <!-- ======= Sidebar ======= -->
- <aside id="sidebar" class="sidebar">
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-    <li class="nav-item">
-      <a class="nav-link " href="anasayfa.html">
-        <i class="bi bi-grid"></i>
-        <span>Ana Sayfa</span>
-      </a>
-    </li><!-- End Dashboard Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="anasayfa.html">
+          <i class="bi bi-grid"></i>
+          <span>Ana Sayfa</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-    <li class="nav-item">
-      <a class="nav-link " href="mufettisTanimla.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Müfettiş Tanımlama</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " href="mufettisBilgileri.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Müfettiş Bilgileri</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link " href="uniteTanimla.html">
-        <i class="bi bi-person-circle"></i>
-        <span>Ünite Tanımlama</span>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="periyodikteftis.html">
-            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-          </a>
-        </li>
-        <li>
-          <a href="inceleme.html">
-            <i class="bi bi-circle"></i><span>İnceleme</span>
-          </a>
-        </li>
-        <li>
-          <a href="sorusturma.html">
-            <i class="bi bi-circle"></i><span>Soruşturma</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Components Nav -->
- </aside> 
-<!-- End Sidebar-->
-  
+      <li class="nav-item">
+        <a class="nav-link " href="mufettisTanimla.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Müfettiş Tanımlama</span>
+        </a>
+      </li>
+      <li class="nav-item" style="display: none;">
+        <a class="nav-link " href="mufettisBilgileri.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Müfettiş Bilgileri</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="uniteTanimla.html">
+          <i class="bi bi-person-circle"></i>
+          <span>Ünite Tanımlama</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="periyodikteftis.html">
+              <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
+            </a>
+          </li>
+          <li>
+            <a href="inceleme.html">
+              <i class="bi bi-circle"></i><span>İnceleme</span>
+            </a>
+          </li>
+          <li>
+            <a href="sorusturma.html">
+              <i class="bi bi-circle"></i><span>Soruşturma</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+  </aside><!-- End Sidebar-->
+
   <main id="main" class="main">
 
     <!-- BİRİNCİ KISIM -->
@@ -125,7 +124,8 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Ünite</label>
             <div class="col-sm-10">
-              <select onchange="uniteSelected(event)" class="form-select" aria-label="Default select example" id="unite">
+              <select onchange="uniteSelected(event)" class="form-select" aria-label="Default select example"
+                id="unite">
                 <option value="">Seçiniz...</option>
               </select>
             </div>
@@ -373,7 +373,7 @@
           </div>
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-          <div class="col-sm-10">
+            <div class="col-sm-10">
               <textarea class="form-control"></textarea>
             </div>
           </div>
@@ -430,7 +430,7 @@
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-  </div>
+    </div>
 
 
   </footer><!-- End Footer -->
@@ -463,32 +463,32 @@
       });
     });
 
-   
+
 
     function uniteSelected(event) {
       selectedUnit = event.target.value;
-      axios.get(`https://localhost:7177/api/UniteBirim/birimSorumlusu/${event.target.value}`).then(function (response){
+      axios.get(`https://localhost:7177/api/UniteBirim/birimSorumlusu/${event.target.value}`).then(function (response) {
 
         var input = document.getElementById("birimSorumlusu");
         input.value = response.data;
       })
 
-      axios.get(`https://localhost:7177/api/UniteBirim/altbirim/${selectedUnit}`).then(function (response){
+      axios.get(`https://localhost:7177/api/UniteBirim/altbirim/${selectedUnit}`).then(function (response) {
 
         var birim = document.getElementById("birim");
-        response.data.forEach(x=>{
+        response.data.forEach(x => {
 
           birim.innerHTML += `<option value = ${x.id}>${x.label}</option>`
         })
       })
 
-     
+
 
     }
 
     function onayla() {
 
-      var teftisKonusu = document.getElementById("date_1").value + " "+document.getElementById("date_2").value;
+      var teftisKonusu = document.getElementById("date_1").value + " " + document.getElementById("date_2").value;
       console.log(teftisKonusu);
 
 
@@ -517,7 +517,7 @@
         detail_2.style.display = "block";
         detail_1.style.display = "none";
       } else {
-       detail_2.style.display = "none";
+        detail_2.style.display = "none";
       }
     }
 
