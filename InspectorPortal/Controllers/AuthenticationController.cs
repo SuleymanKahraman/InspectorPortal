@@ -33,21 +33,24 @@ namespace InspectorPortal.Controllers
         public IActionResult Login([FromBody] AuthenticationLoginDto login)
         {
             var loginResultEntity = dbContext.Kullanicilar.Where(x => x.Email == login.Email && x.Parola == login.Parola)
-                .Select(x => new AuthenticationResultDto
-                {
-                    KullaniciID = x.Id,
-                    Isim = x.Isim,
-                    Soyisim = x.Soyisim,
-                    Unvan = x.Unvan,
+                  .Select(x => new AuthenticationResultDto
+                  {
+                      KullaniciID = x.Id,
+                      Isim = x.Isim,
+                      Soyisim = x.Soyisim,
+                      Unvan = x.Unvan,
 
-                }).FirstOrDefault();
+                  }).FirstOrDefault();
 
             if (loginResultEntity != null)
             {
+                var mufettisID = dbContext.Mufettisler.First(x => x.Email == login.Email).Id;
                 var token = GetJwtToken(loginResultEntity.KullaniciID);
                 loginResultEntity.Token = token;
+                loginResultEntity.MufettisID = mufettisID <= 0 ? mufettisID : 0;
                 return Ok(loginResultEntity);
             }
+
             return BadRequest();
         }
 

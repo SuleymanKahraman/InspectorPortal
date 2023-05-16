@@ -61,6 +61,8 @@ namespace InspectorPortal.Controllers
             return Ok("Müfettiş Bilgileri Mevcut Değil!!!");
         }
 
+        [HttpGet("get-photo-by-id/{mufettisId}")]
+
         // TODO: ADD MUFETTIS
 
         [HttpPost("add-mufettis")]
