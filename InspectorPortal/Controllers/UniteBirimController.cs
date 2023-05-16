@@ -88,7 +88,7 @@ namespace InspectorPortal.Controllers
 
             var firstUniteId = DbContext.UniteBirimler.First(x => x.Birim == "GENEL MUDURLUK").Id;
             var result = DbContext.UniteBirimler
-                                                .Where(x => x.BirimID == firstUniteId)
+                                                .Where(x => x.BirimID == firstUniteId && x.Id != firstUniteId)
                                                 .Select(x => new ListUniteWithSorumlu
                                                 {
                                                     UniteID = x.Id,
@@ -112,7 +112,7 @@ namespace InspectorPortal.Controllers
             //var gmId = DbContext.UniteBirimler.Where(x => x.Birim == "Genel Müdürlük").Select(x => x.Id).FirstOrDefault();
             var firstUniteId = DbContext.UniteBirimler.First(x => x.Birim == "GENEL MUDURLUK").Id;
             var result = DbContext.UniteBirimler
-                                                    .Where(x => x.BirimID == firstUniteId)
+                                                    .Where(x => x.BirimID == firstUniteId && x.Id != firstUniteId)
                                                     .Select(x => new ListUniteOrBirim
                                                     {
                                                         Id = x.Id,
@@ -220,8 +220,19 @@ namespace InspectorPortal.Controllers
 
         //TODO: DELETE UNITE OR BİRİM BY ID
 
+        [HttpDelete("delete-by-id/{uniteId}")]
 
-
+        public IActionResult DeleteUniteById([FromRoute] int uniteId)
+        {
+            var entities = DbContext.UniteBirimler.Where(x => x.Id == uniteId || x.BirimID == uniteId).ToList();
+            DbContext.RemoveRange(entities);
+            var result = DbContext.SaveChanges();
+            if (result > 0)
+            {
+                return Ok();
+            }
+            return BadRequest();
+        }
 
     }
 }

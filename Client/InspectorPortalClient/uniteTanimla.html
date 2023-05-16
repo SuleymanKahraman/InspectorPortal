@@ -140,7 +140,7 @@
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-              type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+              type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onclick="LoadDataTable()">
               Listele
             </button>
           </li>
@@ -355,32 +355,33 @@
         })
         .finally(function () { });
     }
+    function LoadDataTable() {
+      axios
+        .get(`https://localhost:7177/api/UniteBirim/list-unite-with-sorumlu`)
+        .then((response) => {
 
-    axios
-      .get(`https://localhost:7177/api/UniteBirim/list-unite-with-sorumlu`)
-      .then((response) => {
+          var myArray = []
+          myArray = response.data;
+          var table = document.getElementById("table");
+          table.innerHTML = ``;
+          myArray.forEach(x => {
+            var tr = ``;
 
-        var myArray = []
-        myArray = response.data;
-        var table = document.getElementById("table");
-        table.innerHTML = ``;
-        myArray.forEach(x => {
-          var tr = ``;
-
-          tr += `<tr>`;
-          tr += `<td>` + x.unite + `</td>` +
-            `<td>` + x.uniteSorumlusu +
-            `</td>` +
-            `<td><button type="button" class="btn btn-primary" onclick="openDetay(${x.uniteID})">Birimler</button></td>` +
-            `<td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/unitebirimGuncelle.html?uniteID=${x.uniteID}">Güncelle</a></button></td>` +
-            `<th><button type="button" class="btn btn-danger" onclick="deleteUnit()">Sil</button></th>`;
-          tr += `</tr>`;
-          table.innerHTML += tr;
-        });
+            tr += `<tr>`;
+            tr += `<td>` + x.unite + `</td>` +
+              `<td>` + x.uniteSorumlusu +
+              `</td>` +
+              `<td><button type="button" class="btn btn-primary" onclick="openDetay(${x.uniteID})">Birimler</button></td>` +
+              `<td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/unitebirimGuncelle.html?uniteID=${x.uniteID}">Güncelle</a></button></td>` +
+              `<th><button type="button" class="btn btn-danger" onclick="deleteUnit(${x.uniteID})">Sil</button></th>`;
+            tr += `</tr>`;
+            table.innerHTML += tr;
+          });
 
 
 
-      })
+        })
+    }
 
     function openDetay(uniteID) {
       axios.get(`https://localhost:7177/api/UniteBirim/get-birim-by-id/${uniteID}`)
@@ -393,11 +394,18 @@
             tr += `<td>` + x.unite + `</td>`;
             tr += `<td>` + x.uniteSorumlusu + `</td>`;
             tr += `<td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/unitebirimGuncelle.html?uniteID=${x.uniteID}">Güncelle</a></button></td>`;
-            tr += `<th><button type="button" class="btn btn-danger" onclick="deleteUnit()">Sil</button></th>`;
+            tr += `<th><button type="button" class="btn btn-danger" onclick="deleteUnit(${x.uniteID})">Sil</button></th>`;
             tr += `</tr>`;
             birimTable.innerHTML += tr;
             console.log(birimTable);
           });
+        })
+    }
+
+    function deleteUnit(id) {
+      axios.delete(`https://localhost:7177/api/UniteBirim/delete-by-id/${id}`)
+        .then((response) => {
+          LoadDataTable();
         })
     }
 

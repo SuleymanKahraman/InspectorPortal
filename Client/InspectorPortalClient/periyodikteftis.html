@@ -162,12 +162,12 @@
           <label for="inputDate" class="col-sm-2 col-form-label">Tefiş Edilen Dönem</label>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="number" placeholder="YYYY" min="1990" max="2023" id="date_1">
+              <input type="number" placeholder="YYYY" min="1990" max="2023" id="donem-baslangic">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-5">
-              <input type="number" placeholder="YYYY" min="1990" max="2023" id="date_2">
+              <input type="number" placeholder="YYYY" min="1990" max="2023" id="donem-bitis">
 
             </div>
           </div>
@@ -176,7 +176,8 @@
           <div class="card-body  text-light">
             <div class="card-title">Birim Ekle</div>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example" id="birim">
+              <select class="form-select" aria-label="Default select example" id="birim"
+                onchange="subUniteChanged(event)">
                 <option value="">Seçiniz...</option>
               </select>
             </div>
@@ -186,14 +187,12 @@
               <thead>
                 <tr>
                   <th style="width: 75%; text-align: center;">Birim</th>
-                  <th></th>
 
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="birim-table">
                 <tr>
-                  <th style="text-align: center;">Trakya İşletme Müdürlüğü</th>
-                  <td><button type="button"><i class="bi bi-trash"></i></button></td>
+                  <th style="text-align: center;">Lütfen Birim Seçiniz...</th>
                 </tr>
               </tbody>
             </table>
@@ -207,9 +206,8 @@
               <div class="col-md-12">
                 <label for="inputAddress" class="form-label">Teftişi Gerçekleştirecek Müfettiş/Müfettişler</label>
                 <div class="col-sm-10">
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
+                  <select id="mufettisler" class="form-select" onchange="mufettisSelected(event)">
+                    <option value="0">Seçiniz...</option>
                   </select>
                 </div>
               </div>
@@ -221,53 +219,38 @@
               <table class="table table-bordered bg-light">
                 <thead style="text-align: center;">
                   <tr>
+                    <th>Sicil No</th>
                     <th>Unvan</th>
                     <th>İsim</th>
                     <th>Soyisim</th>
                     <th></th>
-
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><button type="button"><i class="bi bi-trash"></i></button></td>
-                  </tr>
+                <tbody id="mufettis-table">
+
                 </tbody>
               </table>
               <!-- End Bordered Table -->
               <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Görev Veriliş Tarihi</label>
-                <input type="date" class="form-control">
+                <input type="date" id="gorev-verilis" class="form-control">
               </div>
               <br>
               <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Görev Başlangıcı</label>
-                <input type="date" class="form-control">
+                <input type="date" id="gorev-baslangic" class="form-control">
               </div>
               <br>
               <div class="col-md-6">
                 <label for="inputAddress" class="form-label">Görev Bitişi</label>
-                <input type="date" class="form-control">
-              </div>
-              <br>
-              <div class="col-md-12">
-                <label for="inputAddress" class="form-label">Görev Durumu</label>
-                <div class="col-sm-10">
-                  <select id="inputState" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
+                <input type="date" id="gorev-bitis" class="form-control">
               </div>
               <br>
             </form><!-- End No Labels Form -->
           </div>
           <br>
           <a class="btn btn-default" href="#">
-            <button type="button" class="btn btn-primary btn-lg"> Yeni Kayıt</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="AddTask()"> Yeni Kayıt</button>
           </a>
           <a class="btn btn-default" href="#">
             <button type="button" class="btn btn-primary btn-lg" onclick="onayla()">Onayla</button>
@@ -288,40 +271,26 @@
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Birim</label>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" aria-label="Default select example" id="birim-bul"
+                onchange="birimBulSelected(event)">
+                <option value="0">Seçiniz...</option>
               </select>
-            </div>
-          </div>
-
-          <label for="inputDate" class="col-sm-2 col-form-label">Tarih Aralığı</label>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="date" class="form-control">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="date" class="form-control">
             </div>
           </div>
 
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Müfettiş </label>
             <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">Süleyman Kahraman</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+              <select class="form-select" asria-label="Default select example" id="mufettis-bul"
+                onchange="mufettisBulSelected(event)">
+                <option value="0">Seçiniz...</option>
+
               </select>
             </div>
           </div>
           <br>
           <div class="col-xs-1 text-center">
-            <button type="button" class="btn btn-primary btn-lg">Listele</button>
-            <button type="button" class="btn btn-primary btn-lg">Tamam</button>
+            <button type="button" class="btn btn-primary btn-lg" onclick="loadGorev()">Listele</button>
           </div>
           <br>
           <div class="card-body">
@@ -337,17 +306,8 @@
                   <th>Hukuki İşlem</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>02.04.2021</td>
-                  <td>17.06.2021</td>
-                  <td>2000 - 2020 Dönemi Teftişi</td>
-                  <td>Süleyman Kahraman</td>
-                  <td>Doğal Gaz İletim 2. Bölge Müdürlüğü/Trakya İşletme Müdürlüğü</td>
-                  <td> <a href="#" onclick="idariTedEkle()">Ekle</a></td>
-                  <td> <a href="#" onclick="hukukiIsEkle()">Ekle</a></td>
+              <tbody id="gorevler-table">
 
-                </tr>
 
               </tbody>
             </table>
@@ -454,38 +414,94 @@
 
   <script>
     var selectedUnit;
-    axios.get(`https://localhost:7177/api/UniteBirim/uniteBirim`).then(function (response) {
-      // var Sorumlu = []
-      // Sorumlu = response.data.birimsorumlusu;
-      var select = document.getElementById("unite");
-      response.data.forEach(x => {
-        select.innerHTML += `<option value= ${x.id}>${x.label}</option>`;
-      });
-    });
-
-
-
+    var mufettisler = [];
+    var selectedMufettisler = [];
+    var selectedBirimId = null;
+    var selectedFilterMufettisName = null;
+    var selectedFilterBirimId = null;
+    LoadUnite();
+    function AddTask() {
+      var data = {
+        BirimId: selectedBirimId,
+        MufettisIds: selectedMufettisler.map(x => x.mufettisId),
+        GorevVerilisTarihi: document.getElementById("gorev-verilis").value,
+        GorevBaslangicTarihi: document.getElementById("gorev-baslangic").value,
+        GorevBitisTarihi: document.getElementById("gorev-bitis").value,
+        Konu: `${document.getElementById("donem-baslangic").value} - ${document.getElementById("donem-bitis").value} dönemi teftişi`
+      }
+      axios
+        .post(`https://localhost:7177/api/Gorev/add-gorev`, data).then((response) => {
+          alert("Başarılı!");
+          window.location.reload();
+        });
+    }
+    function LoadUnite() {
+      axios
+        .get(`https://localhost:7177/api/UniteBirim/list-unite`)
+        .then(function (response) {
+          var select = document.getElementById("unite");
+          response.data.forEach((x) => {
+            select.innerHTML += `<option value= ${x.id}>${x.uniteOrBirim}</option>`;
+          });
+        });
+    }
+    function loadGorev() {
+      let filterData = {
+        BirimId: selectedFilterBirimId != "0" ? selectedFilterBirimId : null,
+        MufettisAdi: selectedFilterMufettisName != "0" ? selectedFilterMufettisName : null
+      };
+      axios
+        .post(`https://localhost:7177/api/Gorev/list-gorevler`, filterData).then((response) => {
+          if (response.data) {
+            var gorevlerTable = document.getElementById("gorevler-table");
+            gorevlerTable.innerHTML = "";
+            response.data.forEach(item => {
+              var gorevlilerHtml = "";
+              item.gorevliMufettisler.forEach(element => {
+                gorevlilerHtml += `${element} <br/>`
+              });
+              gorevlerTable.innerHTML += `                
+              <tr>
+                  <td>${item.baslangicTarihi}</td>
+                  <td>${item.bitisTarihi}</td>
+                  <td>${item.konu}</td>
+                  <td>${gorevlilerHtml}</td>
+                  <td>${item.birimAdi}</td>
+                  <td> <a href="#" onclick="idariTedEkle()">Ekle</a></td>
+                  <td> <a href="#" onclick="hukukiIsEkle()">Ekle</a></td>
+                </tr>`
+            });
+          }
+        })
+    }
     function uniteSelected(event) {
       selectedUnit = event.target.value;
-      axios.get(`https://localhost:7177/api/UniteBirim/birimSorumlusu/${event.target.value}`).then(function (response) {
+      axios.get(`https://localhost:7177/api/UniteBirim/get-birimSorumlusu-by-id/${event.target.value}`).then(function (response) {
 
         var input = document.getElementById("birimSorumlusu");
         input.value = response.data;
       })
-
-      axios.get(`https://localhost:7177/api/UniteBirim/altbirim/${selectedUnit}`).then(function (response) {
+      axios.get(`https://localhost:7177/api/UniteBirim/get-birim-by-id/${selectedUnit}`).then(function (response) {
 
         var birim = document.getElementById("birim");
+        var birimbul = document.getElementById("birim-bul");
         response.data.forEach(x => {
-
-          birim.innerHTML += `<option value = ${x.id}>${x.label}</option>`
+          birim.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
+          birimbul.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
         })
       })
-
-
-
     }
 
+    function subUniteChanged(event) {
+      var birimElement = document.getElementById('birim');
+      selectedBirimId = event.target.value;
+      var selectedText = birimElement.options[birimElement.selectedIndex].innerHTML;
+      var table = document.getElementById("birim-table");
+      table.innerHTML = `
+                <tr>
+                  <th style="text-align: center;">${selectedText}</th>
+                </tr>`;
+    }
     function onayla() {
 
       var teftisKonusu = document.getElementById("date_1").value + " " + document.getElementById("date_2").value;
@@ -493,7 +509,20 @@
 
 
     }
-
+    muffetisleriListele();
+    function muffetisleriListele() {
+      axios.get(`https://localhost:7177/api/Mufettis/list-mufettisler`).then((response) => {
+        if (response.data) {
+          mufettisler = response.data;
+          var mufettislerElement = document.getElementById("mufettisler");
+          var mufettisbulElement = document.getElementById("mufettis-bul");
+          response.data.forEach(element => {
+            mufettislerElement.innerHTML += `<option value="${element.mufettisId}">${element.isim} ${element.soyisim}</option>`
+            mufettisbulElement.innerHTML += `<option value="${element.isim} ${element.soyisim}">${element.isim} ${element.soyisim}</option>`
+          });
+        }
+      })
+    }
 
     function openEkle() {
       var detail_1 = document.getElementById("detail-1");
@@ -519,6 +548,7 @@
       } else {
         detail_2.style.display = "none";
       }
+      loadGorev();
     }
 
     function idariTedEkle() {
@@ -542,6 +572,38 @@
         hukukiIslem.style.display = "none";
       }
 
+    }
+
+    function mufettisSelected(event) {
+      var selectedMufettis = mufettisler.find(x => x.mufettisId == event.target.value);
+      selectedMufettisler.push(selectedMufettis);
+      loadTable();
+    }
+    function deleteSelectedMufettis(id) {
+      selectedMufettisler = selectedMufettisler.filter(x => x.mufettisId != id);
+      loadTable();
+    }
+    function loadTable() {
+      var mufettisTableElement = document.getElementById("mufettis-table");
+      mufettisTableElement.innerHTML = "";
+      selectedMufettisler.forEach(element => {
+        mufettisTableElement.innerHTML += `                  
+                  <tr>
+                    <td>${element.kurumSicilNo}</td>
+                    <td>${element.unvan}</td>
+                    <td>${element.isim}</td>
+                    <td>${element.soyisim}</td>
+                    <td><button type="button" onclick="deleteSelectedMufettis(${element.mufettisId})"><i class="bi bi-trash"></i></button></td>
+                  </tr>`
+      });
+      var mufettislerElement = document.getElementById("mufettisler");
+      mufettislerElement.value = 0;
+    }
+    function mufettisBulSelected(event) {
+      selectedFilterMufettisName = event.target.value;
+    }
+    function birimBulSelected(event) {
+      selectedFilterBirimId = event.target.value;
     }
   </script>
 

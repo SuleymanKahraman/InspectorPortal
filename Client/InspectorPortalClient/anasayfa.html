@@ -253,17 +253,16 @@
       mufettisId: window.localStorage.getItem("MufettisId"),
       isim: window.localStorage.getItem("Isim"),
       soyisim: window.localStorage.getItem("Soyisim"),
-      unvan: window.localStorage.getItem("Unvan")
-    };
+      unvan: window.localStorage.getItem("Unvan"),
 
+    };
+    let photo = window.localStorage.getItem("Photo");
+    const element = document.getElementById("profile-img");
+    element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
     if (adminData.isim && adminData.soyisim && adminData.unvan) {
       document.getElementById("AdminName").innerHTML = adminData.isim + " " + adminData.soyisim;
       document.getElementById("AdminIsimSoyisim").innerHTML = adminData.isim + " " + adminData.soyisim;
       document.getElementById("AdminUnvan").innerHTML = adminData.unvan;
-      axios.get(`https://localhost:7177/api/Mufettis/get-photo-by-id/${adminData.mufettisId}`).then((response) => {
-
-
-      })
 
     } else {
       window.location.href = "/login.html";

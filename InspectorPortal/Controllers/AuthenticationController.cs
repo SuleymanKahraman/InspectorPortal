@@ -44,10 +44,11 @@ namespace InspectorPortal.Controllers
 
             if (loginResultEntity != null)
             {
-                var mufettisID = dbContext.Mufettisler.First(x => x.Email == login.Email).Id;
+                var mufettis = dbContext.Mufettisler.FirstOrDefault(x => x.Email == login.Email);
                 var token = GetJwtToken(loginResultEntity.KullaniciID);
                 loginResultEntity.Token = token;
-                loginResultEntity.MufettisID = mufettisID <= 0 ? mufettisID : 0;
+                loginResultEntity.MufettisID = mufettis != null ? mufettis.Id : 0;
+                loginResultEntity.Photo = Convert.ToBase64String(mufettis.Photo);
                 return Ok(loginResultEntity);
             }
 
@@ -69,12 +70,25 @@ namespace InspectorPortal.Controllers
                 Email = signup.Email,
                 Unvan = signup.Unvan,
                 Parola = signup.Parola
-
+            };
+            var mufettis = new Mufettis()
+            {
+                Adres = "",
+                CalismaDurumu = "Aktif",
+                Email = signup.Email,
+                Isim = signup.Isim,
+                KurumSicilNo = "",
+                MufettisNo = "",
+                Soyisim = signup.Soyisim,
+                TcNo = "",
+                Telefon = "",
+                Unvan = "",
             };
 
             if (signup != null)
             {
                 dbContext.Kullanicilar.Add(SignUpEntity);
+                dbContext.Mufettisler.Add(mufettis);
                 dbContext.SaveChanges();
                 return Ok("Kaydetme Başarılı");
             }
