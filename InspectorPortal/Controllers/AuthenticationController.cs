@@ -48,7 +48,7 @@ namespace InspectorPortal.Controllers
                 var token = GetJwtToken(loginResultEntity.KullaniciID);
                 loginResultEntity.Token = token;
                 loginResultEntity.MufettisID = mufettis != null ? mufettis.Id : 0;
-                loginResultEntity.Photo = Convert.ToBase64String(mufettis.Photo);
+                loginResultEntity.Photo = mufettis.Photo != null ? Convert.ToBase64String(mufettis.Photo) : null;
                 return Ok(loginResultEntity);
             }
 

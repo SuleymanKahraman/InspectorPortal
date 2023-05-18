@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Periyodik Teftiş Modül-1</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/favicon.png" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-center">
+            <a href="anasayfa.html" class="logo d-flex align-items-center">
+                <img src="assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">Teftiş Modül Admin</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+        <div class="search-bar">
+            <form class="search-form d-flex align-items-center" method="POST" action="#">
+                <input type="text" name="query" placeholder="Ara" title="Enter search keyword">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+            </form>
+        </div> <!--End Search Bar -->
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="assets/img/noimage.png" alt="Profile" class="rounded-circle" id="profile-img">
+                        <span class="d-none d-md-block dropdown-toggle ps-2" id="AdminName">K. Anderson</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6 id="AdminIsimSoyisim">Kevin Anderson</h6>
+                            <span id="AdminUnvan">Web Designer</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span> <button type="submit" onclick="logout()">Çıkış</button> </span>
+                        </a>
+                </li>
+
+            </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+    </header><!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="anasayfa.html">
+                    <i class="bi bi-grid"></i>
+                    <span>Ana Sayfa</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link " href="mufettisTanimla.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Müfettiş Tanımlama</span>
+                </a>
+            </li>
+            <li class="nav-item" style="display: none;">
+                <a class="nav-link " href="mufettisBilgileri.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Müfettiş Bilgileri</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="uniteTanimla.html">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Ünite Tanımlama</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="periyodikteftis.html">
+                            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="inceleme.html">
+                            <i class="bi bi-circle"></i><span>İnceleme</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sorusturma.html">
+                            <i class="bi bi-circle"></i><span>Soruşturma</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- End Components Nav -->
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+
+        <!-- GUNCELLEME -->
+        <div class="card">
+            <div class="card-body">
+                <br>
+                <!-- General Form Elements -->
+                <form class="form-control" id="guncelle-form">
+                    <div class="col-sm-10">
+                        <div class="card-title">İlgili Birim:
+                            <span id="birim"></span>
+                        </div>
+                    </div>
+                    <div class="card-title"> Yeni Birim Ekle</div>
+                    <div class="col-sm-10">
+                        <select class="form-select" aria-label="Default select example" id="yeni-birim"
+                            onchange="subUniteChanged(event)">
+                            <option value="">Seçiniz...</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-10">
+                        <div class="card-title"> Teftişin Konusu: </div>
+                        <input type="text" id="konu" class="form-control">
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="card-title"> Teftişte Görevli Müfettişler:
+                            <span id="gorevliMufettisler"></span>
+                        </div>
+                        <div class="col-sm-10">
+                            <select id="mufettisler" class="form-select" onchange="mufettisSelected(event)">
+                                <option value="0">Seçiniz...</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-control">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sicil No</th>
+                                        <th>Unvan</th>
+                                        <th>İsim</th>
+                                        <th>Soyisim</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mufettis-table">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="card-title"> Görev Veriliş Tarihi: </div>
+                            <input type="date" id="gorev-verilis" class="form-control">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="card-title"> Görev Başlama Tarihi: </div>
+                            <input type="date" id="gorev-baslama" class="form-control">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="card-title"> Görev Bitiş Tarihi: </div>
+                            <input type="date" id="gorev-bitis" class="form-control">
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="card-title">Durum: </div>
+                            <select id="durum" class="form-select">
+                                <option value="true">Aktif</option>
+                                <option value="false">Pasif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <a class="btn btn-default" href="#">
+                        <button type="button" class="btn btn-primary btn-lg" onclick="AddTask()"> Güncelle </button>
+                    </a>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- İDARİ TEDBİR/HUKUKİ TEDBİR EKLEME -->
+
+        <!-- <div class="card" id="idariTedbir" style="display: none;">
+            <div class="card-body">
+                <br>
+                <div class="pagetitle">
+                    <h2>İdari Tedbirler</h2>
+                </div>
+                <br>
+                <form>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Onaylanan</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example">
+                                <option value="1">Müfettiş(ler) Görüşü</option>
+                                <option value="2">Başkanlık Görüşü</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card" id="hukukiIslem" style="display: none;">
+            <div class="card-body">
+                <br>
+                <div class="pagetitle">
+                    <h2>Hukuki İşlemler</h2>
+                </div>
+                <br>
+                <form>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Onaylanan</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" aria-label="Default select example">
+                                <option value="1">Müfettiş(ler) Görüşü</option>
+                                <option value="2">Başkanlık Görüşü</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> -->
+
+    </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+    <footer id=" footer" class="footer">
+        <div class="copyright">
+            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+        </div>
+
+
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        const form = document.getElementById("guncelle-form");
+        const gorevId = params.gorevId;
+
+        /* LOGIN İŞLEMLERİ İÇİN */
+
+        const adminData = {
+            kullaniciId: window.localStorage.getItem("KullaniciId"),
+            mufettisId: window.localStorage.getItem("MufettisId"),
+            isim: window.localStorage.getItem("Isim"),
+            soyisim: window.localStorage.getItem("Soyisim"),
+            unvan: window.localStorage.getItem("Unvan"),
+
+        };
+        let photo = window.localStorage.getItem("Photo");
+        const element = document.getElementById("profile-img");
+        element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
+        if (adminData.isim && adminData.soyisim && adminData.unvan) {
+            document.getElementById("AdminName").innerHTML = adminData.isim + " " + adminData.soyisim;
+            document.getElementById("AdminIsimSoyisim").innerHTML = adminData.isim + " " + adminData.soyisim;
+            document.getElementById("AdminUnvan").innerHTML = adminData.unvan;
+
+        } else {
+            window.location.href = "/login.html";
+        }
+
+        function logout() {
+            window.localStorage.clear();
+            window.location.href = "/login.html"
+        }
+
+        loadGorevById();
+        function loadGorevById() {
+
+            axios
+                .get(`https://localhost:7177/api/Gorev/get-gorev-by-Id/${gorevId}`)
+                .then((response) => {
+                    if (response.data) {
+
+                        const gorev = JSON.parse(JSON.stringify(response.data));
+                        const gorevliMufettisler = gorev['0'].gorevliMufettisler['0'];
+                        document.getElementById("birim").innerHTML = gorev['0'].birimAdi;
+                        document.getElementById("konu").value = gorev['0'].konu;
+                        document.getElementById("gorevliMufettisler").innerHTML = gorevliMufettisler;
+                        document.getElementById("gorev-verilis").value = dateConvert(gorev['0'].verilisTarihi);
+                        document.getElementById("gorev-baslama").value = dateConvert(gorev['0'].baslamaTarihi);
+                        document.getElementById("gorev-bitis").value = dateConvert(gorev['0'].bitisTarihi);
+                        document.getElementById("durum").value = gorev['0'].durum;
+                        birimId = gorev['0'].birimId;
+
+                        axios.get(`https://localhost:7177/api/Gorev/get-birim-by-Id/${birimId}`).then((response) => {
+
+                            const birimler = document.getElementById("yeni-birim");
+                            response.data.forEach(item => {
+                                birimler.innerHTML += `<option value= ${item.id}>${item.uniteOrBirim}</option>`;
+
+                            })
+                        })
+                    }
+
+                });
+
+
+        }
+
+
+        function dateConvert(event) {
+            const dateString = event;
+            const date = new Date(dateString);
+
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const day = String(date.getDate()).padStart(2, "0");
+
+            const formattedDate = `${year}-${month}-${day}`;
+            return formattedDate;
+        }
+
+
+
+        /* FONKSİYONLAR İÇİN GEREKLİ FİELDLAR */
+        var selectedUnit;
+        var mufettisler = [];
+        var selectedMufettisler = [];
+        var selectedBirimId = null;
+        var selectedFilterMufettisName = null;
+        var selectedFilterBirimId = null;
+        //LoadUnite();
+
+        /* GÖREV EKLEME */
+        function AddTask() {
+            var data = {
+                BirimId: selectedBirimId,
+                MufettisIds: selectedMufettisler.map(x => x.mufettisId),
+                GorevVerilisTarihi: document.getElementById("gorev-verilis").value,
+                GorevBaslangicTarihi: document.getElementById("gorev-baslangic").value,
+                GorevBitisTarihi: document.getElementById("gorev-bitis").value,
+                Konu: `${document.getElementById("donem-baslangic").value} - ${document.getElementById("donem-bitis").value} dönemi teftişi`
+            }
+            axios
+                .post(`https://localhost:7177/api/Gorev/add-gorev`, data).then((response) => {
+                    alert("Başarılı!");
+                    window.location.reload();
+                });
+        }
+
+        /* UNİTELERİ YÜKLE */
+        // function LoadUnite() {
+        //     axios
+        //         .get(`https://localhost:7177/api/UniteBirim/list-unite`)
+        //         .then(function (response) {
+        //             var select = document.getElementById("unite");
+        //             response.data.forEach((x) => {
+        //                 select.innerHTML += `<option value= ${x.id}>${x.uniteOrBirim}</option>`;
+        //             });
+        //         });
+        // }
+
+        /* FİLTRE İLE ATANMIŞ GÖREVLERİ YÜKLEME */
+        // function loadGorev() {
+        //     let filterData = {
+        //         BirimId: selectedFilterBirimId != "0" ? selectedFilterBirimId : null,
+        //         MufettisAdi: selectedFilterMufettisName != "0" ? selectedFilterMufettisName : null
+        //     };
+        //     axios
+        //         .post(`https://localhost:7177/api/Gorev/list-gorevler`, filterData).then((response) => {
+        //             if (response.data) {
+        //                 var gorevlerTable = document.getElementById("gorevler-table");
+        //                 gorevlerTable.innerHTML = "";
+        //                 response.data.forEach(item => {
+        //                     var gorevlilerHtml = "";
+        //                     item.gorevliMufettisler.forEach(element => {
+        //                         gorevlilerHtml += `${element} <br/>`
+        //                     });
+        //                     gorevlerTable.innerHTML += `                
+        //       <tr>
+        //           <td>${item.baslangicTarihi}</td>
+        //           <td>${item.bitisTarihi}</td>
+        //           <td>${item.konu}</td>
+        //           <td>${gorevlilerHtml}</td>
+        //           <td>${item.birimAdi}</td>
+        //           <td><button type="button" class="btn btn-warning"><a href="">Güncelle</a></button></td>
+        //           <td><button type="button" class="btn btn-danger" onclick="">Sil</button></td>
+        //         </tr>`
+        //                 });
+        //             }
+        //         })
+        // }
+
+        /* BİRİM VE BİRİM SORUMLULARINI GETİRME */
+        function uniteSelected(event) {
+            selectedUnit = event.target.value;
+            axios.get(`https://localhost:7177/api/UniteBirim/get-birimSorumlusu-by-id/${event.target.value}`).then(function (response) {
+
+                var input = document.getElementById("birimSorumlusu");
+                input.value = response.data;
+            })
+            axios.get(`https://localhost:7177/api/UniteBirim/get-birim-by-id/${selectedUnit}`).then(function (response) {
+
+                var birim = document.getElementById("birim");
+                var birimbul = document.getElementById("birim-bul");
+                response.data.forEach(x => {
+                    birim.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
+                    birimbul.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
+                })
+            })
+        }
+
+        /* SEÇİLEN BİRİMİ AŞAĞIDAKİ TABLOYA ATMA  */
+
+        function subUniteChanged(event) {
+            var birimElement = document.getElementById('birim');
+            selectedBirimId = event.target.value;
+            var selectedText = birimElement.options[birimElement.selectedIndex].innerHTML;
+            var table = document.getElementById("birim-table");
+            table.innerHTML = `
+                <tr>
+                  <th style="text-align: center;">${selectedText}</th>
+                </tr>`;
+        }
+
+
+        /* MUFETTİŞLERİN LİSTELENMESİ */
+
+        // muffetisleriListele();
+        // function muffetisleriListele() {
+        //     axios.get(`https://localhost:7177/api/Mufettis/list-mufettisler`).then((response) => {
+        //         if (response.data) {
+        //             mufettisler = response.data;
+        //             var mufettislerElement = document.getElementById("mufettisler");
+        //             var mufettisbulElement = document.getElementById("mufettis-bul");
+        //             response.data.forEach(element => {
+        //                 mufettislerElement.innerHTML += `<option value="${element.mufettisId}">${element.isim} ${element.soyisim}</option>`
+        //                 mufettisbulElement.innerHTML += `<option value="${element.isim} ${element.soyisim}">${element.isim} ${element.soyisim}</option>`
+        //             });
+        //         }
+        //     })
+        // }
+
+
+        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN selectedMufettis dizisine ATANMASI */
+
+        function mufettisSelected(event) {
+            var selectedMufettis = mufettisler.find(x => x.mufettisId == event.target.value);
+            selectedMufettisler.push(selectedMufettis);
+            loadTable();
+        }
+
+        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN TABLODAN SİLİNMESİ */
+
+        function deleteSelectedMufettis(id) {
+
+            //şimdi burada olan şu; selectedMufettisler.filter(x => x.mufettisId != id) 
+            //ile ilgili id ile selectedMufettişler'deki mufettisId'leri benzer olanlar filtrelensin ve diziden çıksın
+
+            selectedMufettisler = selectedMufettisler.filter(x => x.mufettisId != id);
+            loadTable();
+        }
+
+        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN LİSTE HALİNDE AŞAĞIDAKİ TABLOYA ATANMASI */
+
+        function loadTable() {
+            var mufettisTableElement = document.getElementById("mufettis-table");
+            mufettisTableElement.innerHTML = "";
+            selectedMufettisler.forEach(element => {
+                mufettisTableElement.innerHTML += `                  
+                  <tr>
+                    <td>${element.kurumSicilNo}</td>
+                    <td>${element.unvan}</td>
+                    <td>${element.isim}</td>
+                    <td>${element.soyisim}</td>
+                    <td><button type="button" onclick="deleteSelectedMufettis(${element.mufettisId})"><i class="bi bi-trash"></i></button></td>
+                  </tr>`
+            });
+            var mufettislerElement = document.getElementById("mufettisler");
+            mufettislerElement.value = 0;
+        }
+
+        /* VERİ TABANINA KAYITLI GÖREVLERİN BİRİM VE MÜFETTİŞ FİLTRESİYLE */
+
+        function mufettisBulSelected(event) {
+            selectedFilterMufettisName = event.target.value;
+        }
+        function birimBulSelected(event) {
+            selectedFilterBirimId = event.target.value;
+        }
+
+
+
+        /*EKLE VE BUL BUTONLARININ METOTLARI */
+
+        function openEkle() {
+            var detail_1 = document.getElementById("detail-1");
+            var detail_2 = document.getElementById("detail-2");
+            if (detail_1.style.display === "none") {
+                detail_1.style.display = "block";
+                detail_2.style.display = "none";
+            } else {
+                detail_1.style.display = "none";
+            }
+
+            let birim = document.getElementById("unite");
+            console.log(birim.value);
+        }
+
+        function openBul() {
+            var detail_1 = document.getElementById("detail-1");
+            var detail_2 = document.getElementById("detail-2");
+            if (detail_2.style.display === "none") {
+                detail_2.style.display = "block";
+                detail_1.style.display = "none";
+            } else {
+                detail_2.style.display = "none";
+            }
+            loadGorev();
+        }
+
+        function idariTedEkle() {
+            var idariTedbir = document.getElementById("idariTedbir");
+            var hukukiIslem = document.getElementById("hukukiIslem");
+            if (idariTedbir.style.display === "none") {
+                idariTedbir.style.display = "block";
+                hukukiIslem.style.display = "none";
+            } else {
+                idariTedbir.style.display = "none";
+            }
+
+        }
+
+        function hukukiIsEkle() {
+            var hukukiIslem = document.getElementById("hukukiIslem");
+            var idariTedbir = document.getElementById("idariTedbir");
+            if (hukukiIslem.style.display === "none") {
+                hukukiIslem.style.display = "block";
+                idariTedbir.style.display = "none";
+            } else {
+                hukukiIslem.style.display = "none";
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>

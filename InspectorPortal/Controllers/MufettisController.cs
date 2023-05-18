@@ -68,12 +68,15 @@ namespace InspectorPortal.Controllers
         [HttpPost("add-mufettis")]
         public IActionResult AddNewMufettis([FromForm] AddNewMufettis mufettis)
         {
-            byte[] resimBytes;
-            var photo = mufettis.Photo;
-            using (MemoryStream ms = new MemoryStream())
+            byte[] resimBytes = null;
+            if(mufettis.Photo != null)
             {
-                photo.CopyTo(ms);
-                resimBytes = ms.ToArray();
+                var photo = mufettis.Photo;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    photo.CopyTo(ms);
+                    resimBytes = ms.ToArray();
+                }
             }
             var addNewMufettisEntity = new Mufettis()
             {
@@ -87,7 +90,7 @@ namespace InspectorPortal.Controllers
                 CalismaDurumu = mufettis.CalismaDurumu,
                 Telefon = mufettis.Telefon,
                 Adres = mufettis.Adres,
-                Photo = resimBytes
+                Photo = resimBytes,
             };
 
             if (addNewMufettisEntity != null)

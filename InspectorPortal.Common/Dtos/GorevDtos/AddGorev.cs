@@ -1,4 +1,4 @@
-﻿namespace InspectorPortal.Common.Dtos.UniteBirimDtos
+﻿namespace InspectorPortal.Common.Dtos.GorevDtos
 {
     public class AddGorev
     {
