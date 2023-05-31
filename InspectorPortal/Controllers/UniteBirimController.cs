@@ -21,6 +21,8 @@ namespace InspectorPortal.Controllers
             DbContext = dbContext;
         }
 
+        /* EKLEME */
+
         // TODO: ADD UNITE
 
         [HttpPost("add-unite")]
@@ -83,7 +85,6 @@ namespace InspectorPortal.Controllers
         // TODO: GET ALL UNITE WITH SORUMLU
 
         [HttpGet("list-unite-with-sorumlu")]
-
         public IActionResult GetListOfUnite()
         {
 
@@ -109,8 +110,6 @@ namespace InspectorPortal.Controllers
         [HttpGet("list-unite")]
         public IActionResult GetListOFUnite()
         {
-            // UniteBirim.cs'de BirimID'si 53 (Genel Müdürlük satırı ID'si) olanlar Unite olacağından UniteBirimDto'daki fieldlara yerleştirilecektir. 
-            //var gmId = DbContext.UniteBirimler.Where(x => x.Birim == "Genel Müdürlük").Select(x => x.Id).FirstOrDefault();
             var firstUniteId = DbContext.UniteBirimler.First(x => x.Birim == "GENEL MUDURLUK").Id;
             var result = DbContext.UniteBirimler
                                                     .Where(x => x.BirimID == firstUniteId && x.Id != firstUniteId)
@@ -180,7 +179,6 @@ namespace InspectorPortal.Controllers
         [HttpGet("get-birimSorumlusu-by-id/{birimId}")]
         public IActionResult GetBirimSorumlusuById([FromRoute] int birimId)
         {
-            // İlgili UstBirim seçildikten sonra UstBirime bağlı olan AltBirimler post edililir. 
             var result = DbContext.UniteBirimler
                                                 .Where(x => x.Id == birimId)
                                                 .Select(x => x.BirimSorumlusu).FirstOrDefault();

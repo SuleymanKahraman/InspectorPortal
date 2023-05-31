@@ -10,13 +10,10 @@ using System.Text;
 
 namespace InspectorPortal.Controllers
 {
-    // api yazmasak da olur. 
-    // AuthenticationController'daki amaç Login işlemidir. 
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        //DbContext sınıfı controller yapıcı metoduna atanır. 
         private readonly InspectorPortalDbContext dbContext;
 
         public AuthenticationController(InspectorPortalDbContext dbContext)
@@ -26,10 +23,8 @@ namespace InspectorPortal.Controllers
 
 
         // TODO: LOGIN
-        //Login işlemi bir post işlemidir. Attribute'de parantez içinde action'a ulaşabilmek için isim verilebilir. 
-        [HttpPost("login")]
 
-        // AuthenticationRequestDto sınıfından bir örnek alınır. Amaç ajax ile gönderilen postların bu sınıfta tutulmasıdır. Burada tutulan postlar/datalar daha sonrasında Action metodu içinde işlenir. İşlenen veriler daha sonrasında usera gönderilmek istenirse response'un içine istenilen veri enjekte edilip gönderilir. 
+        [HttpPost("login")]
         public IActionResult Login([FromBody] AuthenticationLoginDto login)
         {
             var loginResultEntity = dbContext.Kullanicilar.Where(x => x.Email == login.Email && x.Parola == login.Parola)
@@ -57,9 +52,8 @@ namespace InspectorPortal.Controllers
 
 
         // TODO: SIGN-UP
-        [HttpPost("sign-up")]
 
-        // AuthenticationRequestDto sınıfından bir örnek alınır. Amaç ajax ile gönderilen postların bu sınıfta tutulmasıdır. Burada tutulan postlar/datalar daha sonrasında Action metodu içinde işlenir. İşlenen veriler daha sonrasında usera gönderilmek istenirse response'un içine istenilen veri enjekte edilip gönderilir. 
+        [HttpPost("sign-up")]
         public IActionResult SignUp([FromBody] AuthenticationSignUpDto signup)
         {
 
@@ -94,7 +88,6 @@ namespace InspectorPortal.Controllers
             }
 
             return BadRequest();
-            //TODO: handle
         }
 
         //TODO: GetJwtToken

@@ -1,7 +1,6 @@
 ﻿using InspectorPortal.Common.Dtos.GorevDtos;
 using InspectorPortal.Common.Dtos.MufettisDtos;
 using InspectorPortal.Common.Dtos.UniteBirimDtos;
-using InspectorPortal.Common.Enums;
 using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -21,14 +20,15 @@ namespace InspectorPortal.Controllers
             DbContext = dbContext;
         }
 
-        // GOREV EKLEME
+        /* EKLEME */
+
+        // TODO: ADD GOREV
 
         [HttpPost("add-gorev")]
         public IActionResult GorevTanımla([FromBody] AddGorev input)
         {
             var yeniGorev = new Gorev()
             {
-                GorevTipi = GorevTipi.PeriyodikTeftis,
                 Konusu = input.Konu,
                 UnitID = input.BirimId,
                 VerilisTarihi = input.GorevVerilisTarihi,
@@ -55,13 +55,13 @@ namespace InspectorPortal.Controllers
             return BadRequest();
         }
 
-        // GOREV LİSTELEME
+        /* LİSTELEME */
+
+        // LIST OF GOREVLER
 
         [HttpPost("list-gorevler")]
         public IActionResult ListGorev([FromBody] GorevFilter filter)
         {
-            // Bir görevin birden fazla müfettişi olabilir. Bu nedenle görevleri listelerken ayrıca
-            // List<string> tipinde görevliMüfettişleri de düzenlemeliyiz. 
 
             var result = DbContext.Gorevler.Select(x => new ListAllGorev
             {
@@ -73,7 +73,6 @@ namespace InspectorPortal.Controllers
                 BirimId = x.UnitID
             }).ToList();
 
-            // Database'de görevler öncelikle ListAllGorev Dtos'a atanır. Ardından  MufettisGorev Tablosundan Göreve atanmış müfettişler bulunur ve List tipindeki değere atanır. 
             foreach (var gorev in result)
             {
                 var gorevliMufettisler = DbContext.MufettisGorevler.Where(x => x.GorevID == gorev.GorevId).Select(x => $"{x.Mufettis.Isim} {x.Mufettis.Soyisim}").ToList();
@@ -89,6 +88,8 @@ namespace InspectorPortal.Controllers
             }
             return Ok(result);
         }
+
+        //TODO: GET GOREV BY ID
 
         [HttpGet("get-gorev-by-Id/{gorevId}")]
         public IActionResult ListGorevById([FromRoute] int gorevId)
@@ -117,6 +118,8 @@ namespace InspectorPortal.Controllers
             return BadRequest();
         }
 
+        // TODO: GET BIRIM BY ID IN GOREV
+
         [HttpGet("get-birim-by-Id/{birimId}")]
         public IActionResult GetBirims([FromRoute] int birimId)
         {
@@ -129,6 +132,10 @@ namespace InspectorPortal.Controllers
             if (birimler != null) { return Ok(birimler); }
             return BadRequest();
         }
+
+        /* GUNCELLEME */
+
+        //TODO: UPDATE GOREV
 
         [HttpPut("update-gorev/{gorevId}")]
         public IActionResult UpdateGorev([FromRoute] int gorevId, [FromForm] UpdateGorev updatedGorev)
@@ -168,6 +175,10 @@ namespace InspectorPortal.Controllers
             return BadRequest();
 
         }
+
+        /* SİLME */
+
+        //TODO: DELETE GOREV
 
         [HttpDelete("delete-gorev/{gorevId}")]
         public IActionResult DeleteGorev([FromRoute] int gorevId)

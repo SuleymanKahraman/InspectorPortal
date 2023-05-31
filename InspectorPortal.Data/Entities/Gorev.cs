@@ -1,5 +1,4 @@
-﻿using InspectorPortal.Common.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,8 +14,7 @@ namespace InspectorPortal.Data.Entities
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required]
-        public  GorevTipi GorevTipi { get; set; }
+        
         [Required]
         [MaxLength(100)]
         public string Konusu { get; set; }
@@ -35,9 +33,7 @@ namespace InspectorPortal.Data.Entities
         
         public bool Durum { get; set; }
 
-        public ICollection<IdariTedbir> IdariTedbirler { get; set; }
-        public ICollection<HukukiIslem> HukukiIslemler { get; set; }
-        public ICollection<DisiplinCezasi> DisiplinCezalari { get; set; }
+       
 
 
     }

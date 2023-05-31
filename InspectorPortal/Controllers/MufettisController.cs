@@ -18,6 +18,8 @@ namespace InspectorPortal.Controllers
             this.dbContext = dbContext;
         }
 
+        /* LİSTELEME */
+
         // TODO: LIST OF MUFETTIS
 
         [HttpGet("list-mufettisler")]
@@ -38,6 +40,8 @@ namespace InspectorPortal.Controllers
             }
             return BadRequest();
         }
+
+        //TODO: GET MUFETTIS INFORMATIONS BY ID
 
         [HttpGet("list-mufettis-by-Id/{mufettisId}")]
         public IActionResult ListMufettisById([FromRoute] int mufettisId)
@@ -62,6 +66,9 @@ namespace InspectorPortal.Controllers
             }
             return Ok("Müfettiş Bilgileri Mevcut Değil!!!");
         }
+
+
+        /* EKLEME */
 
         [HttpGet("get-photo-by-id/{mufettisId}")]
 
@@ -105,6 +112,8 @@ namespace InspectorPortal.Controllers
             return BadRequest();
         }
 
+        /* DELETE */
+
         // TODO: DELETE MUFETTIS BY ID
 
         [HttpDelete("delete-mufettis/{mufettisId}")]
@@ -131,6 +140,7 @@ namespace InspectorPortal.Controllers
             }
         }
 
+        /* UPDATE */
         // TODO: UPDATE MUFETTİS BY ID
 
         [HttpPut("update-mufettis/{mufettisId}")]
