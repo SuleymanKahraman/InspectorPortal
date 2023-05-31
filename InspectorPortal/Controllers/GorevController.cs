@@ -4,12 +4,14 @@ using InspectorPortal.Common.Dtos.UniteBirimDtos;
 using InspectorPortal.Common.Enums;
 using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InspectorPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GorevController : ControllerBase
     {
         private readonly InspectorPortalDbContext DbContext;
@@ -125,6 +127,65 @@ namespace InspectorPortal.Controllers
                 UniteOrBirim = x.Birim,
             }).ToList();
             if (birimler != null) { return Ok(birimler); }
+            return BadRequest();
+        }
+
+        [HttpPut("update-gorev/{gorevId}")]
+        public IActionResult UpdateGorev([FromRoute] int gorevId, [FromForm] UpdateGorev updatedGorev)
+        {
+            if (gorevId != 0)
+            {
+                var currentGorev = DbContext.Gorevler.FirstOrDefault(x => x.Id == gorevId);
+                var currentMufettisGorevler = DbContext.MufettisGorevler.Where(x => x.GorevID == gorevId).ToList();
+
+                if (currentGorev != null && currentMufettisGorevler != null)
+                {
+                    DbContext.MufettisGorevler.RemoveRange(currentMufettisGorevler);
+                    foreach (var MufettisID in updatedGorev.MufettisIds)
+                    {
+                        DbContext.MufettisGorevler.Add(new MufettisGorev
+                        {
+                            GorevID = gorevId,
+                            MufettisID = MufettisID,
+                        });
+                    }
+                    currentGorev.UnitID = updatedGorev.BirimId;
+                    currentGorev.Konusu = updatedGorev.Konu;
+                    currentGorev.VerilisTarihi = updatedGorev.GorevVerilisTarihi;
+                    currentGorev.BaslamaTarihi = updatedGorev.GorevBaslangicTarihi;
+                    currentGorev.BitisTarihi = updatedGorev.GorevBitisTarihi;
+                    currentGorev.Durum = updatedGorev.Durum;
+
+                    var result = DbContext.SaveChanges();
+                    if (result > 0)
+                    {
+
+                        return Ok();
+                    }
+
+                }
+            }
+            return BadRequest();
+
+        }
+
+        [HttpDelete("delete-gorev/{gorevId}")]
+        public IActionResult DeleteGorev([FromRoute] int gorevId)
+        {
+            var gorevRow = DbContext.Gorevler.FirstOrDefault(x=>x.Id == gorevId);
+            var mufettisGorevler = DbContext.MufettisGorevler.Where(x => x.GorevID == gorevId).ToList();
+            if (gorevRow != null)
+            {
+                DbContext.Gorevler.Remove(gorevRow);
+                DbContext.MufettisGorevler.RemoveRange(mufettisGorevler);
+                var result = DbContext.SaveChanges();
+                if (result > 0)
+                {
+
+                    return Ok();
+                }
+            }
+
             return BadRequest();
         }
     }

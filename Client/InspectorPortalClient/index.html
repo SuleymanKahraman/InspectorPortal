@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Periyodik Teftiş Modül-1</title>
+  <title>Ana Sayfa</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -20,17 +20,24 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="/assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- =======================================================
+  * Template Name: NiceAdmin
+  * Updated: Mar 09 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
@@ -39,8 +46,8 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-center">
-      <a href="anasayfa.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png">
         <span class="d-none d-lg-block">Teftiş Modül Admin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -51,6 +58,7 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div> <!--End Search Bar -->
+
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
@@ -89,6 +97,7 @@
 
       </ul>
     </nav><!-- End Icons Navigation -->
+
   </header><!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
@@ -97,7 +106,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="anasayfa.html">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>Ana Sayfa</span>
         </a>
@@ -117,95 +126,114 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " href="uniteTanimla.html">
-          <i class="bi bi-person-circle"></i>
+          <i class="bi bi-bounding-box"></i>
           <span>Ünite Tanımlama</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="periyodikteftis.html">
-              <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-            </a>
-          </li>
-          <li>
-            <a href="inceleme.html">
-              <i class="bi bi-circle"></i><span>İnceleme</span>
-            </a>
-          </li>
-          <li>
-            <a href="sorusturma.html">
-              <i class="bi bi-circle"></i><span>Soruşturma</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+    </ul>
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    <!-- BİRİNCİ KISIM -->
-
-    <div class="pagetitle">
-      <h1>Teftiş Bilgileri</h1>
-    </div>
-
+    <!--BUL-START-->
     <div class="card">
       <div class="card-body">
+        <div class="card-title"> GÖREVLER </div>
         <br>
         <!-- General Form Elements -->
-        <form>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Ünite</label>
-            <div class="col-sm-10">
-              <select onchange="uniteSelected(event)" class="form-select" aria-label="Default select example"
-                id="unite">
-                <option value="">Seçiniz...</option>
-              </select>
+        <div id="unite-ve-sorumlu" style="display: block;">
+          <form>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Ünite</label>
+              <div class="col-sm-10">
+                <select onchange="uniteSelected(event)" class="form-select" aria-label="Default select example"
+                  id="unite">
+                  <option value="">Seçiniz...</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Teftişe Tabi Ünitenin Amiri</label>
-            <div class="col-sm-10">
-              <p id="sorumlu"></p>
-              <input id="birimSorumlusu" type="text" class="form-control" value="" disabled>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Teftişe Tabi Ünitenin Amiri</label>
+              <div class="col-sm-10">
+                <p id="sorumlu"></p>
+                <input id="birimSorumlusu" type="text" class="form-control" value="" disabled>
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="col-xs-1 text-align center" style="margin-left: 17%;">
+              <button type="button" class="btn btn-primary" onclick="openEkle()">Görev Ekle</button>
+              <button type="button" class="btn btn-secondary" onclick="openBul()">Görev Bul</button>
+            </div>
+          </form>
+        </div>
+        <br>
+        <div id="load-gorevler" style="display: block;">
+          <form>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Birim</label>
+              <div class="col-sm-10">
+                <select class="form-select" aria-label="Default select example" id="birim-bul"
+                  onchange="birimBulSelected(event)">
+                  <option value="0">Seçiniz...</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Müfettiş </label>
+              <div class="col-sm-10">
+                <select class="form-select" asria-label="Default select example" id="mufettis-bul"
+                  onchange="mufettisBulSelected(event)">
+                  <option value="0">Seçiniz...</option>
+
+                </select>
+              </div>
+            </div>
+            <div class="col-xs-1 text-aligncenter" style="margin-left: 17%;">
+              <button type="button" class="btn btn-outline-success" onclick="loadGorev()">Listele</button>
+            </div>
+            <br>
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Başlama Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                    <th>Teftiş Konusu</th>
+                    <th>Görevli Müfettişler</th>
+                    <th>Teftiş Edilen Ünite/Birim</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="gorevler-table">
+
+
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <a class="btn btn-default" href="#">
-      <button type="button" class="btn btn-primary btn-lg" onclick="openEkle()">Ekle</button>
-    </a>
-    <a class="btn btn-default" href="#">
-      <button type="button" class="btn btn-primary btn-lg" onclick="openBul()">Bul</button>
-    </a>
+    <!--BUL-END-->
 
-    <br><br>
-
-    </div>
-    </div>
-
-
-    <!-- EKLE SEKMESİ -->
-    <div class="card" id="detail-1" style="display: none;">
+    <!-- EKLE-START -->
+    <div class="card" id="gorev-ekle" style="display: none;">
       <div class="card-body">
         <br>
         <!-- General Form Elements -->
         <form>
-          <label for="inputDate" class="col-sm-2 col-form-label">Tefiş Edilen Dönem</label>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="number" placeholder="YYYY" min="1990" max="2023" id="donem-baslangic">
+          <div class="card-body">
+            <div class="card-title">Teftiş Edilen Dönem</div>
+            <div class="row mb-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" placeholder="YYYY" min="1990" max="2023" id="donem-baslangic">
+              </div>
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-sm-5">
-              <input type="number" placeholder="YYYY" min="1990" max="2023" id="donem-bitis">
-
+            <div class="row mb-3">
+              <div class="col-sm-5">
+                <input class="form-control" type="number" placeholder="YYYY" min="1990" max="2023" id="donem-bitis">
+              </div>
             </div>
           </div>
 
@@ -287,147 +315,29 @@
           </div>
           <br>
           <a class="btn btn-default" href="#">
-            <button type="button" class="btn btn-primary btn-lg" onclick="AddTask()"> Yeni Kayıt</button>
+            <button type="button" class="btn btn-outline-success" onclick="AddTask()"> Yeni Kayıt</button>
           </a>
           <br><br>
         </form>
       </div>
     </div>
-
-
-    <!-- BUL SEKMESİ -->
-    <div class=" card" id="detail-2" style="display: none;">
-      <div class="card-body">
-        <br>
-        <!-- General Form Elements -->
-        <form>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Birim</label>
-            <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example" id="birim-bul"
-                onchange="birimBulSelected(event)">
-                <option value="0">Seçiniz...</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Müfettiş </label>
-            <div class="col-sm-10">
-              <select class="form-select" asria-label="Default select example" id="mufettis-bul"
-                onchange="mufettisBulSelected(event)">
-                <option value="0">Seçiniz...</option>
-
-              </select>
-            </div>
-          </div>
-          <br>
-          <div class="col-xs-1 text-center">
-            <button type="button" class="btn btn-primary btn-lg" onclick="loadGorev()">Listele</button>
-          </div>
-          <br>
-          <div class="card-body">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Başlama Tarihi</th>
-                  <th>Bitiş Tarihi</th>
-                  <th>Teftiş Konusu</th>
-                  <th>Görevli Müfettişler</th>
-                  <th>Teftiş Edilen Ünite/Birim</th>
-                  <th>İdari Tedbir</th>
-                  <th>Hukuki İşlem</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="gorevler-table">
-
-
-              </tbody>
-            </table>
-          </div>
-        </form>
-
-      </div>
-    </div>
-    <br>
-    <div class="card" id="idariTedbir" style="display: none;">
-      <div class="card-body">
-        <br>
-        <div class="pagetitle">
-          <h2>İdari Tedbirler</h2>
-        </div>
-        <br>
-        <form>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
-            <div class="col-sm-10">
-              <textarea class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-            <div class="col-sm-10">
-              <textarea class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Onaylanan</label>
-            <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">Müfettiş(ler) Görüşü</option>
-                <option value="2">Başkanlık Görüşü</option>
-              </select>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="card" id="hukukiIslem" style="display: none;">
-      <div class="card-body">
-        <br>
-        <div class="pagetitle">
-          <h2>Hukuki İşlemler</h2>
-        </div>
-        <br>
-        <form>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
-            <div class="col-sm-10">
-              <textarea class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-            <div class="col-sm-10">
-              <textarea class="form-control"></textarea>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Onaylanan</label>
-            <div class="col-sm-10">
-              <select class="form-select" aria-label="Default select example">
-                <option value="1">Müfettiş(ler) Görüşü</option>
-                <option value="2">Başkanlık Görüşü</option>
-              </select>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+    <!-- EKLE-END -->
 
   </main><!-- End #main -->
 
+
   <!-- ======= Footer ======= -->
-  <footer id=" footer" class="footer">
+  <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
-
-
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
@@ -446,14 +356,14 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
   <script>
 
-    /* LOGIN İŞLEMLERİ İÇİN */
+    /* LOGIN İŞLEMLERİ İÇİN*/
 
     const adminData = {
       kullaniciId: window.localStorage.getItem("KullaniciId"),
       mufettisId: window.localStorage.getItem("MufettisId"),
+      token: window.localStorage.getItem("Token"),
       isim: window.localStorage.getItem("Isim"),
       soyisim: window.localStorage.getItem("Soyisim"),
       unvan: window.localStorage.getItem("Unvan"),
@@ -471,6 +381,7 @@
       window.location.href = "/login.html";
     }
 
+
     function logout() {
       window.localStorage.clear();
       window.location.href = "/login.html"
@@ -483,6 +394,8 @@
     var selectedBirimId = null;
     var selectedFilterMufettisName = null;
     var selectedFilterBirimId = null;
+    var selectedGorevId = null;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
     LoadUnite();
 
     /* GÖREV EKLEME */
@@ -537,8 +450,8 @@
                   <td>${item.konu}</td>
                   <td>${gorevlilerHtml}</td>
                   <td>${item.birimAdi}</td>
-                  <td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/periyodikteftisGuncelle.html?gorevId=${item.gorevId}">Güncelle</a></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="">Sil</button></td>
+                  <td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/periyodikteftisGuncelle.html?gorevId=${item.gorevId}"> Güncelle <i class="bi bi-vector-pen"></i></a></button></td>
+                  <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="sendGorevId(event)" gorevId=${item.gorevId}> Sil <i class="bi bi-trash"></i></button></td>
                 </tr>`
             });
           }
@@ -557,6 +470,8 @@
 
         var birim = document.getElementById("birim");
         var birimbul = document.getElementById("birim-bul");
+        birim.innerHTML = "";
+        birimbul.innerHTML = "";
         response.data.forEach(x => {
           birim.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
           birimbul.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
@@ -601,6 +516,7 @@
     function mufettisSelected(event) {
       var selectedMufettis = mufettisler.find(x => x.mufettisId == event.target.value);
       selectedMufettisler.push(selectedMufettis);
+      console.log(selectedMufettis);
       loadTable();
     }
 
@@ -634,6 +550,30 @@
       mufettislerElement.value = 0;
     }
 
+    function sendGorevId(event) {
+
+      var gorevId = event.target.getAttribute('gorevId');
+      selectedGorevId = gorevId;
+
+    }
+
+    function deleteGorev() {
+
+      var gorevId = selectedGorevId;
+      axios
+        .delete(`https://localhost:7177/api/Gorev/delete-gorev/${gorevId}`)
+        .then((response) => {
+
+          if (response) {
+
+            loadGorev();
+            window.location.href = "/periyodikteftis.html";
+
+          }
+
+        })
+    }
+
     /* VERİ TABANINA KAYITLI GÖREVLERİN BİRİM VE MÜFETTİŞ FİLTRESİYLE */
 
     function mufettisBulSelected(event) {
@@ -648,54 +588,27 @@
     /*EKLE VE BUL BUTONLARININ METOTLARI */
 
     function openEkle() {
-      var detail_1 = document.getElementById("detail-1");
-      var detail_2 = document.getElementById("detail-2");
-      if (detail_1.style.display === "none") {
-        detail_1.style.display = "block";
-        detail_2.style.display = "none";
-      } else {
-        detail_1.style.display = "none";
+      var addGorev = document.getElementById("gorev-ekle");
+      var loadGorev = document.getElementById("load-gorevler");
+      if (addGorev.style.display === "none") {
+        addGorev.style.display = "block";
+        loadGorev.style.display = "none";
       }
 
-      let birim = document.getElementById("unite");
-      console.log(birim.value);
     }
 
     function openBul() {
-      var detail_1 = document.getElementById("detail-1");
-      var detail_2 = document.getElementById("detail-2");
-      if (detail_2.style.display === "none") {
-        detail_2.style.display = "block";
-        detail_1.style.display = "none";
+      var addGorev = document.getElementById("gorev-ekle");
+      var loadGorev = document.getElementById("load-gorevler");
+      if (loadGorev.style.display === "none") {
+        loadGorev.style.display = "block";
+        addGorev.style.display = "none";
       } else {
-        detail_2.style.display = "none";
+        loadGorev.style.display = "none";
       }
       loadGorev();
     }
 
-    function idariTedEkle() {
-      var idariTedbir = document.getElementById("idariTedbir");
-      var hukukiIslem = document.getElementById("hukukiIslem");
-      if (idariTedbir.style.display === "none") {
-        idariTedbir.style.display = "block";
-        hukukiIslem.style.display = "none";
-      } else {
-        idariTedbir.style.display = "none";
-      }
-
-    }
-
-    function hukukiIsEkle() {
-      var hukukiIslem = document.getElementById("hukukiIslem");
-      var idariTedbir = document.getElementById("idariTedbir");
-      if (hukukiIslem.style.display === "none") {
-        hukukiIslem.style.display = "block";
-        idariTedbir.style.display = "none";
-      } else {
-        hukukiIslem.style.display = "none";
-      }
-
-    }
   </script>
 
 </body>

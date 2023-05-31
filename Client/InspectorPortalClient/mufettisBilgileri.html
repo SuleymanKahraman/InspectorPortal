@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Mufettiş Bilgileri</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,7 +74,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-center">
-      <a href="anasayfa.html" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">Teftiş Modül Admin</span>
       </a>
@@ -133,7 +133,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="anasayfa.html">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>Ana Sayfa</span>
         </a>
@@ -153,32 +153,11 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " href="uniteTanimla.html">
-          <i class="bi bi-person-circle"></i>
+          <i class="bi bi-bounding-box"></i>
           <span>Ünite Tanımlama</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="periyodikteftis.html">
-              <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-            </a>
-          </li>
-          <li>
-            <a href="inceleme.html">
-              <i class="bi bi-circle"></i><span>İnceleme</span>
-            </a>
-          </li>
-          <li>
-            <a href="sorusturma.html">
-              <i class="bi bi-circle"></i><span>Soruşturma</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+    </ul>
   </aside><!-- End Sidebar-->
 
 
@@ -269,7 +248,7 @@
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <!-- Profile Edit Form -->
-                  <form id="guncelle-form" action="mufettisBilgileri.html">
+                  <form id="-formguncelle" action="mufettisBilgileri.html">
                     <div class="profile-card d-flex flex-column align-items-center">
                       <img src="assets/img/noimage.png" id="profile-photo-guncelle" alt="Profile"
                         class="rounded-circle">
@@ -445,7 +424,7 @@
 
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>Table
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/chart.js/chart.umd.js"></script>
   <script src="assets/vendor/echarts/echarts.min.js"></script>
@@ -470,7 +449,8 @@
 
     const adminData = {
       kullaniciId: window.localStorage.getItem("KullaniciId"),
-      mufettisId: window.localStorage.getItem("MufettisId"),
+      MufettisID: window.localStorage.getItem("MufettisID"),
+      token: window.localStorage.getItem("Token"),
       isim: window.localStorage.getItem("Isim"),
       soyisim: window.localStorage.getItem("Soyisim"),
       unvan: window.localStorage.getItem("Unvan"),
@@ -495,8 +475,7 @@
     }
 
     /* MÜFETTİŞ BİLGİLERİNİ GETİR */
-    // let token = window.localStorage.getItem("token");
-    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
 
     function loadMufettisBilgi() {
       axios.get(`https://localhost:7177/api/Mufettis/list-mufettis-by-Id/${mufettisId}`).then(function (response) {
@@ -541,18 +520,25 @@
     /* DELETE İŞLEMİ */
 
     function deleteMufettis() {
-      axios
-        .delete(`https://localhost:7177/api/Mufettis/delete-mufettis/${mufettisId}`)
-        .then((response) => {
+      debugger;
+      if (mufettisId === adminData.MufettisID) {
+        alert("Silme İşlemine Yetkili Değilsiniz");
+        window.location.href = "/mufettisTanimla.html";
+      } else {
+        axios
+          .delete(`https://localhost:7177/api/Mufettis/delete-mufettis/${mufettisId}`)
+          .then((response) => {
 
-          if (response) {
+            if (response) {
 
-            alert(response.data);
-            window.location.href = "/mufettisTanimla.html";
+              alert(response.data);
+              window.location.href = "/mufettisTanimla.html";
 
-          }
+            }
 
-        })
+          })
+      }
+
     }
 
     /* UPDATE İŞLEMİ */

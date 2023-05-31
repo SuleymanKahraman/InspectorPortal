@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-  <title>Ana Sayfa</title>
+  <title>Unite/Birim Tanımlama</title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
 
@@ -41,10 +41,29 @@
 </head>
 
 <body>
+  <!-- ======= ModalForDelete ======= -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Uyarı!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="myValueDisplay"></p>
+          Silmek istediğinize emin misiniz?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <button type="button" class="btn btn-danger" onclick="deleteUnit()">Evet</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-center">
-      <a href="anasayfa.html" class="logo d-flex align-items-center">
+      <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="" />
         <span class="d-none d-lg-block">Teftiş Modül Admin</span>
       </a>
@@ -108,7 +127,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="anasayfa.html">
+        <a class="nav-link " href="index.html">
           <i class="bi bi-grid"></i>
           <span>Ana Sayfa</span>
         </a>
@@ -128,32 +147,11 @@
       </li>
       <li class="nav-item">
         <a class="nav-link " href="uniteTanimla.html">
-          <i class="bi bi-person-circle"></i>
+          <i class="bi bi-bounding-box"></i>
           <span>Ünite Tanımlama</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="periyodikteftis.html">
-              <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-            </a>
-          </li>
-          <li>
-            <a href="inceleme.html">
-              <i class="bi bi-circle"></i><span>İnceleme</span>
-            </a>
-          </li>
-          <li>
-            <a href="sorusturma.html">
-              <i class="bi bi-circle"></i><span>Soruşturma</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
+    </ul>
   </aside><!-- End Sidebar-->
 
   <!-- ======= Main ======= -->
@@ -163,29 +161,61 @@
         <h5 class="card-title"></h5>
 
         <!-- Pills Tabs -->
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-              type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-              Ünite Ekle
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="presentation">
+          <li class="nav-item" role="presentation" style="margin-right: 10px;">
+            <button class="btn btn-outline-primary btn-lg" id="pills-home-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"
+              onclick="listele()">
+              LİSTELE
             </button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-              type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
-              Birim Ekle
+          <li class="nav-item" role="tabpanel" style="margin-right: 10px;">
+            <button class="btn btn-outline-secondary btn-lg" id="pills-profile-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+              aria-selected="false" onclick="closeListele()">
+              UNİTE EKLE
             </button>
           </li>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-              type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onclick="LoadDataTable()">
-              Listele
+          <li class="nav-item" role="tabpanel">
+            <button class="btn btn-outline-success btn-lg" id="pills-contact-tab" data-bs-toggle="pill"
+              data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+              aria-selected="false" onclick="closeListele()">
+              BİRİM EKLE
             </button>
           </li>
         </ul>
         <div class="tab-content pt-2">
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="home-tab"
+            style="display: block;">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Unite Adı</th>
+                  <th>Unite Sorumlusu</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="table">
+
+              </tbody>
+            </table>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Birim Adı</th>
+                  <th>Birim Sorumlusu</th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="table-birim">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade show" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
             <!-- Vertical Form -->
             <form class="row g-3">
               <div class="col-12">
@@ -220,7 +250,7 @@
             </form>
             <!-- Vertical Form -->
           </div>
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="tab-pane fade show" id="pills-contact" role="tabpanel">
             <!-- Vertical Form -->
             <form class="row g-3">
               <div class="col-12">
@@ -258,34 +288,6 @@
               </div>
             </form>
             <!-- Vertical Form -->
-          </div>
-          <div class="tab-pane fade" id="pills-contact" role="tabpanel">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Unite Adı</th>
-                  <th>Unite Sorumlusu</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="table">
-
-              </tbody>
-            </table>
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Birim Adı</th>
-                  <th>Birim Sorumlusu</th>
-                  <th></th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="table-birim">
-
-              </tbody>
-            </table>
           </div>
         </div>
         <!-- End Pills Tabs -->
@@ -326,12 +328,13 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-
+    LoadDataTable();
     /* LOGIN İŞLEMLERİ İÇİN */
 
     const adminData = {
       kullaniciId: window.localStorage.getItem("KullaniciId"),
       mufettisId: window.localStorage.getItem("MufettisId"),
+      token: window.localStorage.getItem("Token"),
       isim: window.localStorage.getItem("Isim"),
       soyisim: window.localStorage.getItem("Soyisim"),
       unvan: window.localStorage.getItem("Unvan"),
@@ -360,6 +363,9 @@
     var selectedUnit;
     var uniteSorumlusu;
     var birimSorumlusu;
+    var selectedUnitID = null;
+    /* Token */
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
     LoadUnite();
     function LoadUnite() {
       axios
@@ -445,12 +451,14 @@
               `</td>` +
               `<td><button type="button" class="btn btn-primary" onclick="openDetay(${x.uniteID})">Birimler</button></td>` +
               `<td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/unitebirimGuncelle.html?uniteID=${x.uniteID}">Güncelle</a></button></td>` +
-              `<th><button type="button" class="btn btn-danger" onclick="deleteUnit(${x.uniteID})">Sil</button></th>`;
+              `<th><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="sendUnitID(${x.uniteID})">Sil</button></th>`;
             tr += `</tr>`;
             table.innerHTML += tr;
           });
         })
     }
+
+
 
     /* UNİTELERE AİT BİRİMLERİN DETAYLAR SAYFASI AÇILDIĞINDA LİSTELENMESİ */
     function openDetay(uniteID) {
@@ -464,7 +472,7 @@
             tr += `<td>` + x.unite + `</td>`;
             tr += `<td>` + x.uniteSorumlusu + `</td>`;
             tr += `<td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/unitebirimGuncelle.html?uniteID=${x.uniteID}">Güncelle</a></button></td>`;
-            tr += `<th><button type="button" class="btn btn-danger" onclick="deleteUnit(${x.uniteID})">Sil</button></th>`;
+            tr += `<th><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="sendUnitID(${x.uniteID})">Sil</button></th>`;
             tr += `</tr>`;
             birimTable.innerHTML += tr;
             console.log(birimTable);
@@ -474,11 +482,38 @@
 
     /* UNİTE VE BİRİMLERİN SİLİNMESİ İŞLEMİ */
 
-    function deleteUnit(id) {
+    function sendUnitID(uniteID) {
+
+      selectedUnitID = uniteID;
+
+    }
+    function deleteUnit() {
+      var id = selectedUnitID;
       axios.delete(`https://localhost:7177/api/UniteBirim/delete-by-id/${id}`)
         .then((response) => {
-          LoadDataTable();
+          if (response) {
+            alert(response.data);
+            location.reload();
+          }
+
         })
+    }
+
+    function closeListele() {
+
+      var dataTable = document.getElementById("pills-home");
+      if (dataTable.style.display === "block") {
+        dataTable.style.display = "none";
+      }
+
+    }
+
+    function listele() {
+
+      var dataTable = document.getElementById("pills-home");
+      if (dataTable.style.display === "none") {
+        dataTable.style.display = "block";
+      }
     }
 
   </script>

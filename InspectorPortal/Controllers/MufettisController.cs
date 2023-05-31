@@ -1,12 +1,14 @@
 ﻿using InspectorPortal.Common.Dtos.MufettisDtos;
 using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InspectorPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MufettisController : ControllerBase
     {
         private readonly InspectorPortalDbContext dbContext;

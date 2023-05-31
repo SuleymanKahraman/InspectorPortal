@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <title>Ana Sayfa</title>
+    <title>Unite/Birim Güncelleme</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
@@ -44,7 +44,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-center">
-            <a href="anasayfa.html" class="logo d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="" />
                 <span class="d-none d-lg-block">Teftiş Modül Admin</span>
             </a>
@@ -108,7 +108,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="anasayfa.html">
+                <a class="nav-link " href="index.html">
                     <i class="bi bi-grid"></i>
                     <span>Ana Sayfa</span>
                 </a>
@@ -128,33 +128,11 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="uniteTanimla.html">
-                    <i class="bi bi-person-circle"></i>
+                    <i class="bi bi-bounding-box"></i>
                     <span>Ünite Tanımlama</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="periyodikteftis.html">
-                            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="inceleme.html">
-                            <i class="bi bi-circle"></i><span>İnceleme</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sorusturma.html">
-                            <i class="bi bi-circle"></i><span>Soruşturma</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
+        </ul>
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
@@ -162,7 +140,7 @@
             <div class="card-body">
                 <br><br>
                 <!-- Vertical Form -->
-                <form class="row g-3">
+                <form class="row g-3" id="guncelle-form" action="unitebirimGuncelle.html">
                     <div class="col-12">
                         <h5>Ünite/Birim</h5>
 
@@ -185,7 +163,7 @@
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-lg" onclick="update()">
+                        <button type="submit" class="btn btn-primary btn-lg">
                             Güncelle
                         </button>
                     </div>
@@ -230,11 +208,13 @@
     <script src="assets/js/main.js"></script>
     <script>
 
+
         /* LOGIN İŞLEMLERİ İÇİN */
 
         const adminData = {
             kullaniciId: window.localStorage.getItem("KullaniciId"),
             mufettisId: window.localStorage.getItem("MufettisId"),
+            token: window.localStorage.getItem("Token"),
             isim: window.localStorage.getItem("Isim"),
             soyisim: window.localStorage.getItem("Soyisim"),
             unvan: window.localStorage.getItem("Unvan"),
@@ -257,6 +237,10 @@
             window.location.href = "/login.html"
         }
 
+        /* Token */
+        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+        const guncelleForm = document.getElementById("guncelle-form");
+
         /* URL'e kayıtlı uniteID parametresini almak için oluşturulmuş metot */
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
@@ -271,26 +255,26 @@
             })
 
         /* Unite veya Birimin Update edilmesi */
-        function update() {
 
+        guncelleForm.addEventListener("submit", function (event) {
+            event.preventDefault();
             currentUniteBirim = {
                 uniteOrBirim: document.getElementById("unite-birim").value,
                 uniteOrBirimSorumlusu: document.getElementById("unite-birim-sorumlusu").value,
-
             };
-
-            axios.put(`https://localhost:7177/api/UniteBirim/update-unite-birim-by-id/${uniteId}`, currentUniteBirim)
-                .then((response) => {
-
+            axios
+                .put(`https://localhost:7177/api/UniteBirim/update-unite-birim-by-id/${uniteId}`, currentUniteBirim)
+                .then(function (response) {
                     if (response) {
-                        console.log(response.data);
-                        debugger;
-                        alert(response.data);
+                        window.location.href = "/uniteTanimla.html";
                     }
-
-
                 })
-        }
+                .catch(function (error) {
+                    alert(error);
+                });
+
+        })
+
 
     </script>
 </body>

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Periyodik Teftiş Modül-1</title>
+    <title>Periyodik Teftiş Güncelleme</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -39,7 +39,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-center">
-            <a href="anasayfa.html" class="logo d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">Teftiş Modül Admin</span>
             </a>
@@ -97,7 +97,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="anasayfa.html">
+                <a class="nav-link " href="index.html">
                     <i class="bi bi-grid"></i>
                     <span>Ana Sayfa</span>
                 </a>
@@ -117,33 +117,11 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="uniteTanimla.html">
-                    <i class="bi bi-person-circle"></i>
+                    <i class="bi bi-bounding-box"></i>
                     <span>Ünite Tanımlama</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Görevler</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="periyodikteftis.html">
-                            <i class="bi bi-circle"></i><span>Periyodik Teftiş</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="inceleme.html">
-                            <i class="bi bi-circle"></i><span>İnceleme</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sorusturma.html">
-                            <i class="bi bi-circle"></i><span>Soruşturma</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
+        </ul>
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
@@ -165,6 +143,22 @@
                             onchange="subUniteChanged(event)">
                             <option value="">Seçiniz...</option>
                         </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-10">
+                        <table class="table table-bordered bg-light">
+                            <thead>
+                                <tr>
+                                    <th style="width: 75%; text-align: center;">Birim</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="birim-table">
+                                <tr>
+                                    <th style="text-align: center;">Lütfen Birim Seçiniz...</th>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <br>
                     <div class="col-sm-10">
@@ -219,80 +213,13 @@
                     </div>
                     <br>
                     <a class="btn btn-default" href="#">
-                        <button type="button" class="btn btn-primary btn-lg" onclick="AddTask()"> Güncelle </button>
+                        <button type="submit" class="btn btn-primary btn-lg"> Güncelle </button>
                     </a>
                     <br><br>
                 </form>
             </div>
         </div>
 
-
-        <!-- İDARİ TEDBİR/HUKUKİ TEDBİR EKLEME -->
-
-        <!-- <div class="card" id="idariTedbir" style="display: none;">
-            <div class="card-body">
-                <br>
-                <div class="pagetitle">
-                    <h2>İdari Tedbirler</h2>
-                </div>
-                <br>
-                <form>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Onaylanan</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example">
-                                <option value="1">Müfettiş(ler) Görüşü</option>
-                                <option value="2">Başkanlık Görüşü</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="card" id="hukukiIslem" style="display: none;">
-            <div class="card-body">
-                <br>
-                <div class="pagetitle">
-                    <h2>Hukuki İşlemler</h2>
-                </div>
-                <br>
-                <form>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Müfettiş(ler)ce Teklif Edilen</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Başkanlıkça Teklif Edilen</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-2 col-form-label">Onaylanan</label>
-                        <div class="col-sm-10">
-                            <select class="form-select" aria-label="Default select example">
-                                <option value="1">Müfettiş(ler) Görüşü</option>
-                                <option value="2">Başkanlık Görüşü</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div> -->
 
     </main><!-- End #main -->
 
@@ -331,12 +258,18 @@
         });
         const form = document.getElementById("guncelle-form");
         const gorevId = params.gorevId;
-
+        /* FONKSİYONLAR İÇİN GEREKLİ FİELDLAR */
+        var selectedUnit;
+        var mufettisler = [];
+        var selectedMufettisler = [];
+        var selectedBirimId = null;
+        //LoadUnite();
         /* LOGIN İŞLEMLERİ İÇİN */
 
         const adminData = {
             kullaniciId: window.localStorage.getItem("KullaniciId"),
             mufettisId: window.localStorage.getItem("MufettisId"),
+            token: window.localStorage.getItem("Token"),
             isim: window.localStorage.getItem("Isim"),
             soyisim: window.localStorage.getItem("Soyisim"),
             unvan: window.localStorage.getItem("Unvan"),
@@ -358,7 +291,7 @@
             window.localStorage.clear();
             window.location.href = "/login.html"
         }
-
+        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
         loadGorevById();
         function loadGorevById() {
 
@@ -377,7 +310,6 @@
                         document.getElementById("gorev-bitis").value = dateConvert(gorev['0'].bitisTarihi);
                         document.getElementById("durum").value = gorev['0'].durum;
                         birimId = gorev['0'].birimId;
-
                         axios.get(`https://localhost:7177/api/Gorev/get-birim-by-Id/${birimId}`).then((response) => {
 
                             const birimler = document.getElementById("yeni-birim");
@@ -386,6 +318,7 @@
 
                             })
                         })
+                        muffetisleriListele();
                     }
 
                 });
@@ -393,6 +326,57 @@
 
         }
 
+
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            let updatedTask = new FormData();
+            updatedTask.append("BirimId", selectedBirimId);
+            updatedTask.append("Konu", document.getElementById("konu").value);
+            updatedTask.append("MufettisIds", selectedMufettisler.map(x => x.mufettisId));
+            updatedTask.append("GorevVerilisTarihi", document.getElementById("gorev-verilis").value);
+            updatedTask.append("GorevBaslangicTarihi", document.getElementById("gorev-baslama").value);
+            updatedTask.append("GorevBitisTarihi", document.getElementById("gorev-bitis").value);
+            updatedTask.append("Durum", document.getElementById("durum").value);
+
+            axios.put(`https://localhost:7177/api/Gorev/update-gorev/${gorevId}`, updatedTask, {
+                "Content-Type": "multipart/form-data",
+            }).then((response) => {
+
+            })
+        })
+
+
+        function subUniteChanged(event) {
+            var birimElement = document.getElementById('yeni-birim');
+            selectedBirimId = event.target.value;
+            var selectedText = birimElement.options[birimElement.selectedIndex].innerHTML;
+            var table = document.getElementById("birim-table");
+            table.innerHTML = `
+                <tr>
+                  <th style="text-align: center;">${selectedText}</th>
+                </tr>`;
+        }
+
+        function muffetisleriListele() {
+            axios.get(`https://localhost:7177/api/Mufettis/list-mufettisler`).then((response) => {
+                if (response.data) {
+                    mufettisler = response.data;
+                    var mufettislerElement = document.getElementById("mufettisler");
+                    response.data.forEach(element => {
+                        mufettislerElement.innerHTML += `<option value="${element.mufettisId}">${element.isim} ${element.soyisim}</option>`
+                    });
+                }
+            })
+        }
+
+
+
+        function mufettisSelected(event) {
+            var selectedMufettis = mufettisler.find(x => x.mufettisId == event.target.value);
+            selectedMufettisler.push(selectedMufettis);
+            loadTable();
+        }
 
         function dateConvert(event) {
             const dateString = event;
@@ -405,149 +389,6 @@
             const formattedDate = `${year}-${month}-${day}`;
             return formattedDate;
         }
-
-
-
-        /* FONKSİYONLAR İÇİN GEREKLİ FİELDLAR */
-        var selectedUnit;
-        var mufettisler = [];
-        var selectedMufettisler = [];
-        var selectedBirimId = null;
-        var selectedFilterMufettisName = null;
-        var selectedFilterBirimId = null;
-        //LoadUnite();
-
-        /* GÖREV EKLEME */
-        function AddTask() {
-            var data = {
-                BirimId: selectedBirimId,
-                MufettisIds: selectedMufettisler.map(x => x.mufettisId),
-                GorevVerilisTarihi: document.getElementById("gorev-verilis").value,
-                GorevBaslangicTarihi: document.getElementById("gorev-baslangic").value,
-                GorevBitisTarihi: document.getElementById("gorev-bitis").value,
-                Konu: `${document.getElementById("donem-baslangic").value} - ${document.getElementById("donem-bitis").value} dönemi teftişi`
-            }
-            axios
-                .post(`https://localhost:7177/api/Gorev/add-gorev`, data).then((response) => {
-                    alert("Başarılı!");
-                    window.location.reload();
-                });
-        }
-
-        /* UNİTELERİ YÜKLE */
-        // function LoadUnite() {
-        //     axios
-        //         .get(`https://localhost:7177/api/UniteBirim/list-unite`)
-        //         .then(function (response) {
-        //             var select = document.getElementById("unite");
-        //             response.data.forEach((x) => {
-        //                 select.innerHTML += `<option value= ${x.id}>${x.uniteOrBirim}</option>`;
-        //             });
-        //         });
-        // }
-
-        /* FİLTRE İLE ATANMIŞ GÖREVLERİ YÜKLEME */
-        // function loadGorev() {
-        //     let filterData = {
-        //         BirimId: selectedFilterBirimId != "0" ? selectedFilterBirimId : null,
-        //         MufettisAdi: selectedFilterMufettisName != "0" ? selectedFilterMufettisName : null
-        //     };
-        //     axios
-        //         .post(`https://localhost:7177/api/Gorev/list-gorevler`, filterData).then((response) => {
-        //             if (response.data) {
-        //                 var gorevlerTable = document.getElementById("gorevler-table");
-        //                 gorevlerTable.innerHTML = "";
-        //                 response.data.forEach(item => {
-        //                     var gorevlilerHtml = "";
-        //                     item.gorevliMufettisler.forEach(element => {
-        //                         gorevlilerHtml += `${element} <br/>`
-        //                     });
-        //                     gorevlerTable.innerHTML += `                
-        //       <tr>
-        //           <td>${item.baslangicTarihi}</td>
-        //           <td>${item.bitisTarihi}</td>
-        //           <td>${item.konu}</td>
-        //           <td>${gorevlilerHtml}</td>
-        //           <td>${item.birimAdi}</td>
-        //           <td><button type="button" class="btn btn-warning"><a href="">Güncelle</a></button></td>
-        //           <td><button type="button" class="btn btn-danger" onclick="">Sil</button></td>
-        //         </tr>`
-        //                 });
-        //             }
-        //         })
-        // }
-
-        /* BİRİM VE BİRİM SORUMLULARINI GETİRME */
-        function uniteSelected(event) {
-            selectedUnit = event.target.value;
-            axios.get(`https://localhost:7177/api/UniteBirim/get-birimSorumlusu-by-id/${event.target.value}`).then(function (response) {
-
-                var input = document.getElementById("birimSorumlusu");
-                input.value = response.data;
-            })
-            axios.get(`https://localhost:7177/api/UniteBirim/get-birim-by-id/${selectedUnit}`).then(function (response) {
-
-                var birim = document.getElementById("birim");
-                var birimbul = document.getElementById("birim-bul");
-                response.data.forEach(x => {
-                    birim.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
-                    birimbul.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
-                })
-            })
-        }
-
-        /* SEÇİLEN BİRİMİ AŞAĞIDAKİ TABLOYA ATMA  */
-
-        function subUniteChanged(event) {
-            var birimElement = document.getElementById('birim');
-            selectedBirimId = event.target.value;
-            var selectedText = birimElement.options[birimElement.selectedIndex].innerHTML;
-            var table = document.getElementById("birim-table");
-            table.innerHTML = `
-                <tr>
-                  <th style="text-align: center;">${selectedText}</th>
-                </tr>`;
-        }
-
-
-        /* MUFETTİŞLERİN LİSTELENMESİ */
-
-        // muffetisleriListele();
-        // function muffetisleriListele() {
-        //     axios.get(`https://localhost:7177/api/Mufettis/list-mufettisler`).then((response) => {
-        //         if (response.data) {
-        //             mufettisler = response.data;
-        //             var mufettislerElement = document.getElementById("mufettisler");
-        //             var mufettisbulElement = document.getElementById("mufettis-bul");
-        //             response.data.forEach(element => {
-        //                 mufettislerElement.innerHTML += `<option value="${element.mufettisId}">${element.isim} ${element.soyisim}</option>`
-        //                 mufettisbulElement.innerHTML += `<option value="${element.isim} ${element.soyisim}">${element.isim} ${element.soyisim}</option>`
-        //             });
-        //         }
-        //     })
-        // }
-
-
-        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN selectedMufettis dizisine ATANMASI */
-
-        function mufettisSelected(event) {
-            var selectedMufettis = mufettisler.find(x => x.mufettisId == event.target.value);
-            selectedMufettisler.push(selectedMufettis);
-            loadTable();
-        }
-
-        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN TABLODAN SİLİNMESİ */
-
-        function deleteSelectedMufettis(id) {
-
-            //şimdi burada olan şu; selectedMufettisler.filter(x => x.mufettisId != id) 
-            //ile ilgili id ile selectedMufettişler'deki mufettisId'leri benzer olanlar filtrelensin ve diziden çıksın
-
-            selectedMufettisler = selectedMufettisler.filter(x => x.mufettisId != id);
-            loadTable();
-        }
-
-        /* GÖREVE SEÇİLEN MÜFETTİŞLERİN LİSTE HALİNDE AŞAĞIDAKİ TABLOYA ATANMASI */
 
         function loadTable() {
             var mufettisTableElement = document.getElementById("mufettis-table");
@@ -566,67 +407,10 @@
             mufettislerElement.value = 0;
         }
 
-        /* VERİ TABANINA KAYITLI GÖREVLERİN BİRİM VE MÜFETTİŞ FİLTRESİYLE */
+        function deleteSelectedMufettis(id) {
 
-        function mufettisBulSelected(event) {
-            selectedFilterMufettisName = event.target.value;
-        }
-        function birimBulSelected(event) {
-            selectedFilterBirimId = event.target.value;
-        }
-
-
-
-        /*EKLE VE BUL BUTONLARININ METOTLARI */
-
-        function openEkle() {
-            var detail_1 = document.getElementById("detail-1");
-            var detail_2 = document.getElementById("detail-2");
-            if (detail_1.style.display === "none") {
-                detail_1.style.display = "block";
-                detail_2.style.display = "none";
-            } else {
-                detail_1.style.display = "none";
-            }
-
-            let birim = document.getElementById("unite");
-            console.log(birim.value);
-        }
-
-        function openBul() {
-            var detail_1 = document.getElementById("detail-1");
-            var detail_2 = document.getElementById("detail-2");
-            if (detail_2.style.display === "none") {
-                detail_2.style.display = "block";
-                detail_1.style.display = "none";
-            } else {
-                detail_2.style.display = "none";
-            }
-            loadGorev();
-        }
-
-        function idariTedEkle() {
-            var idariTedbir = document.getElementById("idariTedbir");
-            var hukukiIslem = document.getElementById("hukukiIslem");
-            if (idariTedbir.style.display === "none") {
-                idariTedbir.style.display = "block";
-                hukukiIslem.style.display = "none";
-            } else {
-                idariTedbir.style.display = "none";
-            }
-
-        }
-
-        function hukukiIsEkle() {
-            var hukukiIslem = document.getElementById("hukukiIslem");
-            var idariTedbir = document.getElementById("idariTedbir");
-            if (hukukiIslem.style.display === "none") {
-                hukukiIslem.style.display = "block";
-                idariTedbir.style.display = "none";
-            } else {
-                hukukiIslem.style.display = "none";
-            }
-
+            selectedMufettisler = selectedMufettisler.filter(x => x.mufettisId != id);
+            loadTable();
         }
     </script>
 

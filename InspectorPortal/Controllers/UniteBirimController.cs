@@ -1,6 +1,7 @@
 ﻿using InspectorPortal.Common.Dtos.UniteBirimDtos;
 using InspectorPortal.Data;
 using InspectorPortal.Data.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,7 @@ namespace InspectorPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
+    [Authorize]
     public class UniteBirimController : ControllerBase
     {
         private readonly InspectorPortalDbContext DbContext;
@@ -229,7 +230,7 @@ namespace InspectorPortal.Controllers
             var result = DbContext.SaveChanges();
             if (result > 0)
             {
-                return Ok();
+                return Ok("Silme İşlemi Başarılı");
             }
             return BadRequest();
         }
