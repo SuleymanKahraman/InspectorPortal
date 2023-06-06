@@ -8,6 +8,8 @@
   <title>Login Sayfası</title>
   <meta content="" name="description" />
   <meta content="" name="keywords" />
+  <meta name="google-signin-client_id"
+    content="560866369590-7n6kq3l1abmpap9ppjfrdgkjug21p0qi.apps.googleusercontent.com">
   <!-- <meta name="google-signin-client_id"
     content="82796243805-8431jt2sb3u26f3pfa371jfbp0brnu4c.apps.googleusercontent.com"> -->
   <!-- Favicons -->
@@ -56,13 +58,19 @@
                 </a>
               </div>
               <!-- End Logo -->
-
+              <!-- <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
+              </div>
+              <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                data-text="sign_in_with" data-shape="rectangular" data-callback="OnSuccess" data-logo_alignment="left">
+              </div> -->
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">
                       Giriş Yapınız
                     </h5>
+
                   </div>
 
                   <div class="row g-3">
@@ -85,10 +93,11 @@
                       Lütfen Parola Giriniz
                     </div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-12 d-flex flex-column align-items-center">
                     <button class="btn btn-primary w-100 mb-3" type="submit">
                       Login
                     </button>
+                    <div class="g-signin2 mb-2" data-onsuccess="onSignIn"></div>
                   </div>
                   </form>
                   <div class="col-12">
@@ -105,6 +114,7 @@
     </div>
     </section>
     </div>
+
   </main>
   <!-- End #main -->
 
@@ -121,9 +131,13 @@
   <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
+    function OnSuccess() {
+      // Create you code
+    }
     const form = document.getElementById("login-form");
     form.addEventListener("submit", function (event) {
 

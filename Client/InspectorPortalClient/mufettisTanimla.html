@@ -290,6 +290,8 @@
             unvan: window.localStorage.getItem("Unvan"),
 
         };
+        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+
         let profilePhoto = window.localStorage.getItem("Photo");
         const element = document.getElementById("profile-img");
         element.src = profilePhoto != null ? "data:image/jpeg;base64," + profilePhoto : element.src;
@@ -307,7 +309,6 @@
             window.location.href = "/login.html"
         }
 
-        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
         const form = document.getElementById("kayit-form");
         var photo;
         loadListOfMufettis();

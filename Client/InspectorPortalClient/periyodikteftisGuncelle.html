@@ -275,6 +275,8 @@
             unvan: window.localStorage.getItem("Unvan"),
 
         };
+        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+
         let photo = window.localStorage.getItem("Photo");
         const element = document.getElementById("profile-img");
         element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
@@ -291,7 +293,6 @@
             window.localStorage.clear();
             window.location.href = "/login.html"
         }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
         loadGorevById();
         function loadGorevById() {
 
@@ -342,6 +343,8 @@
             axios.put(`https://localhost:7177/api/Gorev/update-gorev/${gorevId}`, updatedTask, {
                 "Content-Type": "multipart/form-data",
             }).then((response) => {
+                alert("Güncelleme Başarılı!");
+                window.location.href = "http://127.0.0.1:5501/index.html";
 
             })
         })

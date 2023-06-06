@@ -220,6 +220,8 @@
             unvan: window.localStorage.getItem("Unvan"),
 
         };
+        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+
         let photo = window.localStorage.getItem("Photo");
         const element = document.getElementById("profile-img");
         element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
@@ -238,7 +240,6 @@
         }
 
         /* Token */
-        axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
         const guncelleForm = document.getElementById("guncelle-form");
 
         /* URL'e kayıtlı uniteID parametresini almak için oluşturulmuş metot */

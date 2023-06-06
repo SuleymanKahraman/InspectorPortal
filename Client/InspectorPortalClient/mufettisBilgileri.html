@@ -436,6 +436,16 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
+    const adminData = {
+      kullaniciId: window.localStorage.getItem("KullaniciId"),
+      MufettisID: window.localStorage.getItem("MufettisID"),
+      token: window.localStorage.getItem("Token"),
+      isim: window.localStorage.getItem("Isim"),
+      soyisim: window.localStorage.getItem("Soyisim"),
+      unvan: window.localStorage.getItem("Unvan"),
+
+    };
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
 
     var uploadedPhoto;
     const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -447,15 +457,7 @@
 
     /* LOGIN İŞLEMLERİ İÇİN*/
 
-    const adminData = {
-      kullaniciId: window.localStorage.getItem("KullaniciId"),
-      MufettisID: window.localStorage.getItem("MufettisID"),
-      token: window.localStorage.getItem("Token"),
-      isim: window.localStorage.getItem("Isim"),
-      soyisim: window.localStorage.getItem("Soyisim"),
-      unvan: window.localStorage.getItem("Unvan"),
 
-    };
     let photo = window.localStorage.getItem("Photo");
     const element = document.getElementById("profile-img");
     element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
@@ -475,7 +477,6 @@
     }
 
     /* MÜFETTİŞ BİLGİLERİNİ GETİR */
-    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
 
     function loadMufettisBilgi() {
       axios.get(`https://localhost:7177/api/Mufettis/list-mufettis-by-Id/${mufettisId}`).then(function (response) {

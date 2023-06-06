@@ -41,7 +41,24 @@
 </head>
 
 <body>
-
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Uyarı!</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="myValueDisplay"></p>
+          Silmek istediğinize emin misiniz?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+          <button type="button" class="btn btn-danger" onclick="deleteGorev()">Evet</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -158,65 +175,77 @@
                 <input id="birimSorumlusu" type="text" class="form-control" value="" disabled>
               </div>
             </div>
-            <div class="col-xs-1 text-align center" style="margin-left: 17%;">
-              <button type="button" class="btn btn-primary" onclick="openEkle()">Görev Ekle</button>
-              <button type="button" class="btn btn-secondary" onclick="openBul()">Görev Bul</button>
-            </div>
+
           </form>
         </div>
         <br>
-        <div id="load-gorevler" style="display: block;">
-          <form>
-            <div class="row mb-3">
-              <label class="col-sm-2 col-form-label">Birim</label>
-              <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" id="birim-bul"
-                  onchange="birimBulSelected(event)">
-                  <option value="0">Seçiniz...</option>
-                </select>
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label class="col-sm-2 col-form-label">Müfettiş </label>
-              <div class="col-sm-10">
-                <select class="form-select" asria-label="Default select example" id="mufettis-bul"
-                  onchange="mufettisBulSelected(event)">
-                  <option value="0">Seçiniz...</option>
 
-                </select>
-              </div>
-            </div>
-            <div class="col-xs-1 text-aligncenter" style="margin-left: 17%;">
-              <button type="button" class="btn btn-outline-success" onclick="loadGorev()">Listele</button>
-            </div>
-            <br>
-            <div class="card-body">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Başlama Tarihi</th>
-                    <th>Bitiş Tarihi</th>
-                    <th>Teftiş Konusu</th>
-                    <th>Görevli Müfettişler</th>
-                    <th>Teftiş Edilen Ünite/Birim</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="gorevler-table">
-
-
-                </tbody>
-              </table>
-            </div>
-          </form>
-        </div>
       </div>
     </div>
     <!--BUL-END-->
+    <div class="col-xs-1 text-align mb-4">
+      <button type="button" id="button-gorev-bul" class="btn btn-primary" onclick="openBul()">Görev Bul</button>
+      <button type="button" id="button-gorev-ekle" class="btn btn-secondary" onclick="openEkle()">Görev Ekle</button>
+    </div>
+    <div class="card" id="load-gorevler">
+      <div class="card-body">
+        <br>
+        <!-- General Form Elements -->
+        <form>
+          <div class="card-body">
+            <div class="card-title">Teftiş Edilen Dönem</div>
+            <div style="display: block;">
+              <form>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Birim</label>
+                  <div class="col-sm-10">
+                    <select class="form-select" aria-label="Default select example" id="birim-bul"
+                      onchange="birimBulSelected(event)">
+                      <option value="0">Seçiniz...</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Müfettiş </label>
+                  <div class="col-sm-10">
+                    <select class="form-select" asria-label="Default select example" id="mufettis-bul"
+                      onchange="mufettisBulSelected(event)">
+                      <option value="0">Seçiniz...</option>
 
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xs-1 text-aligncenter" style="margin-left: 17%;">
+                  <button type="button" class="btn btn-outline-success" onclick="loadGorev()">Listele</button>
+                </div>
+                <br>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Başlama Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>Teftiş Konusu</th>
+                        <th>Görevli Müfettişler</th>
+                        <th>Teftiş Edilen Ünite/Birim</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody id="gorevler-table">
+
+
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <!-- EKLE-START -->
     <div class="card" id="gorev-ekle" style="display: none;">
       <div class="card-body">
@@ -369,6 +398,8 @@
       unvan: window.localStorage.getItem("Unvan"),
 
     };
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+
     let photo = window.localStorage.getItem("Photo");
     const element = document.getElementById("profile-img");
     element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
@@ -395,9 +426,8 @@
     var selectedFilterMufettisName = null;
     var selectedFilterBirimId = null;
     var selectedGorevId = null;
-    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
     LoadUnite();
-
+    loadGorev();
     /* GÖREV EKLEME */
     function AddTask() {
       var data = {
@@ -451,7 +481,7 @@
                   <td>${gorevlilerHtml}</td>
                   <td>${item.birimAdi}</td>
                   <td><button type="button" class="btn btn-warning"><a href="http://127.0.0.1:5501/periyodikteftisGuncelle.html?gorevId=${item.gorevId}"> Güncelle <i class="bi bi-vector-pen"></i></a></button></td>
-                  <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="sendGorevId(event)" gorevId=${item.gorevId}> Sil <i class="bi bi-trash"></i></button></td>
+                  <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="sendGorevId(${item.gorevId})"> Sil <i class="bi bi-trash"></i></button></td>
                 </tr>`
             });
           }
@@ -550,25 +580,20 @@
       mufettislerElement.value = 0;
     }
 
-    function sendGorevId(event) {
-
-      var gorevId = event.target.getAttribute('gorevId');
-      selectedGorevId = gorevId;
-
+    function sendGorevId(selectedId) {
+      console.log("id alındı!");
+      // var gorevId = event.target.getAttribute('gorevId');
+      selectedGorevId = selectedId;
     }
 
     function deleteGorev() {
-
       var gorevId = selectedGorevId;
       axios
         .delete(`https://localhost:7177/api/Gorev/delete-gorev/${gorevId}`)
         .then((response) => {
-
           if (response) {
-
             loadGorev();
-            window.location.href = "/periyodikteftis.html";
-
+            location.reload();
           }
 
         })
@@ -588,6 +613,12 @@
     /*EKLE VE BUL BUTONLARININ METOTLARI */
 
     function openEkle() {
+      var buttonGorevEkle = document.getElementById("button-gorev-ekle");
+      buttonGorevEkle.classList.remove("btn-secondary");
+      buttonGorevEkle.classList.add("btn-primary");
+      var buttonGorevBul = document.getElementById("button-gorev-bul");
+      buttonGorevBul.classList.add("btn-secondary");
+      buttonGorevBul.classList.remove("btn-primary");
       var addGorev = document.getElementById("gorev-ekle");
       var loadGorev = document.getElementById("load-gorevler");
       if (addGorev.style.display === "none") {
@@ -598,6 +629,12 @@
     }
 
     function openBul() {
+      var buttonGorevBul = document.getElementById("button-gorev-bul");
+      buttonGorevBul.classList.remove("btn-secondary");
+      buttonGorevBul.classList.add("btn-primary");
+      var buttonGorevEkle = document.getElementById("button-gorev-ekle");
+      buttonGorevEkle.classList.add("btn-secondary");
+      buttonGorevEkle.classList.remove("btn-primary");
       var addGorev = document.getElementById("gorev-ekle");
       var loadGorev = document.getElementById("load-gorevler");
       if (loadGorev.style.display === "none") {

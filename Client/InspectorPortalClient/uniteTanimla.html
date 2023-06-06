@@ -328,9 +328,6 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    LoadDataTable();
-    /* LOGIN İŞLEMLERİ İÇİN */
-
     const adminData = {
       kullaniciId: window.localStorage.getItem("KullaniciId"),
       mufettisId: window.localStorage.getItem("MufettisId"),
@@ -340,6 +337,12 @@
       unvan: window.localStorage.getItem("Unvan"),
 
     };
+    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
+
+    LoadDataTable();
+    /* LOGIN İŞLEMLERİ İÇİN */
+
+
     let photo = window.localStorage.getItem("Photo");
     const element = document.getElementById("profile-img");
     element.src = photo != null ? "data:image/jpeg;base64," + photo : element.src;
@@ -365,7 +368,6 @@
     var birimSorumlusu;
     var selectedUnitID = null;
     /* Token */
-    axios.defaults.headers.common['Authorization'] = `Bearer ${adminData.token}`;
     LoadUnite();
     function LoadUnite() {
       axios
