@@ -1,0 +1,28 @@
+
+	Merhaba Hocam, 
+
+	Tanıtım videosu 11 dakikada en kısa haliyle attım. 
+	Hem database'i hem API hem de Ön yüzde geliştirme yaptığım 
+	özellikleri tanıtmak 5 dakika da mümkün değildi. 
+	Çok emek harcadım umarım videonun biraz uzun olmasına değmiştir.  
+
+ ## YOUTUBE VİDEOSU LİNKİ ##
+
+ https://youtu.be/Ocj_fQuIBYY
+
+ ## ÖNEMLİ NOTLAR ##
+
+ - Database Entity Framework Code First yaklaşımıyla oluşturulmuştur. 
+ - Database'in aktif hale getirilmesi için EF-Migration çıkılması gerekmektedir.
+
+Add-Migration [name] -P InspectorPortal.Data -C InspectorPortalDbContext -S InspectorPortal
+
+Update-Database -P InspectorPortal.Data -Context InspectorPortalDbContext -S InspectorPortal
+
+ - Database'de UniteBirimler tablosu kendi içinde ilişkisel bir yapı arz etmektedir. 
+Amaç, ünite ve birimler arasındaki hiyerarşiyi tayin edebilmektir. 
+Bu nedenle tablodaki bazı verilerin (örneğin; ilk ve en üst düzey Unite GENEL MÜDÜRLÜK olmalıdır) olması gerekiyor.
+Tablo verileri InspectorPortalDB adlı klasörün içinde SQL Script olarak yazılmıştır.
+
+ - Uygulamanın ön yüzü Client Dosyasının içerisinde mevcuttur. Ön yüz Visual Studio Code'da geliştirilmiştir. 
+

@@ -201,7 +201,7 @@
                   <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" id="birim-bul"
                       onchange="birimBulSelected(event)">
-                      <option value="0">Seçiniz...</option>
+
                     </select>
                   </div>
                 </div>
@@ -272,7 +272,7 @@
             <div class="col-sm-10">
               <select class="form-select" aria-label="Default select example" id="birim"
                 onchange="subUniteChanged(event)">
-                <option value="">Seçiniz...</option>
+
               </select>
             </div>
             <br>
@@ -500,8 +500,8 @@
 
         var birim = document.getElementById("birim");
         var birimbul = document.getElementById("birim-bul");
-        birim.innerHTML = "";
-        birimbul.innerHTML = "";
+        birim.innerHTML = `<option value="">Seçiniz...</option>`;
+        birimbul.innerHTML = `<option value="0">Seçiniz...</option>`;
         response.data.forEach(x => {
           birim.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
           birimbul.innerHTML += `<option value="${x.uniteID}">${x.unite}</option>`
