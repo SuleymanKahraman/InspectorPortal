@@ -137,13 +137,13 @@ namespace InspectorPortal.Controllers
 
         //TODO: UPDATE GOREV
 
-        [HttpPut("update-gorev/{gorevId}")]
-        public IActionResult UpdateGorev([FromRoute] int gorevId, [FromForm] UpdateGorev updatedGorev)
+        [HttpPost("update-gorev-by-Id")]
+        public IActionResult UpdateGorev([FromForm] UpdateGorev updatedGorev)
         {
-            if (gorevId != 0)
+            if (updatedGorev.GorevId != 0)
             {
-                var currentGorev = DbContext.Gorevler.FirstOrDefault(x => x.Id == gorevId);
-                var currentMufettisGorevler = DbContext.MufettisGorevler.Where(x => x.GorevID == gorevId).ToList();
+                var currentGorev = DbContext.Gorevler.FirstOrDefault(x => x.Id == updatedGorev.GorevId);
+                var currentMufettisGorevler = DbContext.MufettisGorevler.Where(x => x.GorevID == updatedGorev.GorevId).ToList();
 
                 if (currentGorev != null && currentMufettisGorevler != null)
                 {
@@ -152,7 +152,7 @@ namespace InspectorPortal.Controllers
                     {
                         DbContext.MufettisGorevler.Add(new MufettisGorev
                         {
-                            GorevID = gorevId,
+                            GorevID = updatedGorev.GorevId,
                             MufettisID = MufettisID,
                         });
                     }
@@ -173,7 +173,6 @@ namespace InspectorPortal.Controllers
                 }
             }
             return BadRequest();
-
         }
 
         /* SİLME */

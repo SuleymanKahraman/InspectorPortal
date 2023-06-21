@@ -8,6 +8,7 @@ namespace InspectorPortal.Common.Dtos.GorevDtos
 {
     public class UpdateGorev
     {
+        public int GorevId { get; set; }    
         public int BirimId { get; set; }
         public List<int> MufettisIds { get; set; }
         public DateTime GorevVerilisTarihi { get; set; }

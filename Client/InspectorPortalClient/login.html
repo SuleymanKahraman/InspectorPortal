@@ -9,9 +9,8 @@
   <meta content="" name="description" />
   <meta content="" name="keywords" />
   <meta name="google-signin-client_id"
-    content="560866369590-7n6kq3l1abmpap9ppjfrdgkjug21p0qi.apps.googleusercontent.com">
-  <!-- <meta name="google-signin-client_id"
-    content="82796243805-8431jt2sb3u26f3pfa371jfbp0brnu4c.apps.googleusercontent.com"> -->
+    content="560866369590-plmoc0o1d7u9kq74123us8k96ll11n29.apps.googleusercontent.com">
+
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon" />
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -54,16 +53,9 @@
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo.png" alt="" />
                   <span class="d-none d-lg-block">Teftiş Modulü</span>
-                  <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
                 </a>
               </div>
               <!-- End Logo -->
-              <!-- <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="false">
-              </div>
-              <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
-                data-text="sign_in_with" data-shape="rectangular" data-callback="OnSuccess" data-logo_alignment="left">
-              </div> -->
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
@@ -186,6 +178,14 @@
         return;
       }
       validationMessage.innerHTML = "&#x2714;";
+    }
+
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
     }
 
   </script>
